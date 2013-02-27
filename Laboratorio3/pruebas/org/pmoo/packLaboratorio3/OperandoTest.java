@@ -9,13 +9,14 @@ import org.junit.Test;
 public class OperandoTest {
 	
 	//Variables
-	private Operando op1, op2;
+	private Operando op1, op2, resultado;
 
 	@Before
 	public void setUp() {
 		
 		op1 = new Operando(4);
 		op2 = new Operando(2);
+		resultado = new Operando(0);
 	}
 
 	@After
@@ -37,27 +38,32 @@ public class OperandoTest {
 
 	@Test
 	public void testSumar() {
-		assertEquals(6, op1.sumar(op2));
+		resultado = op1.sumar(op2);
+		assertEquals(6, resultado.getValor());
 	}
 
 	@Test
 	public void testRestar() {
-		assertEquals(2, op1.restar(op2));
+		resultado = op1.restar(op2);
+		assertEquals(2, resultado.getValor());
 	}
 
 	@Test
 	public void testMultiplicar() {
-		assertEquals(8, op1.multiplicar(op2));
+		resultado = op1.multiplicar(op2);
+		assertEquals(8, resultado.getValor());
 	}
 
 	@Test
 	public void testDividir() {
-		assertEquals(2, op1.dividir(op2));
+		resultado = op1.dividir(op2);
+		assertEquals(2, resultado.getValor());
 	}
 
 	@Test
 	public void testGetResto() {
-		assertEquals(0, op1.getResto(op2));
+		resultado = op1.getResto(op2);
+		assertEquals(0, resultado.getValor());
 	}
 
 }
