@@ -42,6 +42,7 @@ public class Operando {
 	
 	public Operando dividir(Operando pOperando) {
 		Operando value = new Operando(this.getValor() / pOperando.getValor());
+		//ATENCION SE DEBE CONTROLAR LAS DIVISIONES ENTRE 0
 		return value; 
 	}
 	

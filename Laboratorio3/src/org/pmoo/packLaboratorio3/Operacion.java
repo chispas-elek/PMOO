@@ -74,6 +74,7 @@ public class Operacion {
 			break;
 		case COCIENTE:
 			resultado = this.getOperando1() / this.getOperando2();
+			//ATENCIÓN SE DEBE CONTROLAR LAS DIVISIONES ENTRE 0
 			break;
 		case RESTO:
 			resultado = this.getOperando1() % this.getOperando2();
