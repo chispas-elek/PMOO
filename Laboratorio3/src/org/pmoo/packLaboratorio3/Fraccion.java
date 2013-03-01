@@ -43,13 +43,13 @@ public class Fraccion implements IFraccion {
 
 	public void simplificar() {
 		int i = 2;
-		while(i<= this.getDenominador() && this.getDenominador() > 1) {
+		while(i<= this.getDenominador() && this.getDenominador() > 1 && this.getNumerador() > 1) {
 			if(this.getNumerador() % this.getDenominador() == 0) {
 				//La fracción es divisible entre si misma
 				this.setNumerador(this.getNumerador() / this.getDenominador());
 				this.setDenominador(1);
 			}
-			if(this.getNumerador() % i ==0 && this.getDenominador() % i == 0) {
+			if(this.getNumerador() % i == 0 && this.getDenominador() % i == 0) {
 				this.setNumerador(this.getNumerador() / i);
 				this.setDenominador(this.getDenominador() / i);
 			}
