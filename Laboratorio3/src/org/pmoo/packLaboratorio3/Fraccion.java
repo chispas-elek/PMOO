@@ -42,34 +42,58 @@ public class Fraccion implements IFraccion {
 	}
 
 	public void simplificar() {
-		
+		int i = 2;
+		while(i<= this.getDenominador() && this.getDenominador() > 1) {
+			if(this.getNumerador() % this.getDenominador() == 0) {
+				//La fracción es divisible entre si misma
+				this.setNumerador(this.getNumerador() / this.getDenominador());
+				this.setDenominador(1);
+			}
+			if(this.getNumerador() % i ==0 && this.getDenominador() % i == 0) {
+				this.setNumerador(this.getNumerador() / i);
+				this.setDenominador(this.getDenominador() / i);
+			}
+			if(this.getNumerador() % i !=0 || this.getDenominador() % i !=0) {
+				i++;
+			}
+			if(this.getDenominador() < 0) {
+				this.setNumerador(this.getNumerador() * -1);
+				this.setDenominador(this.getDenominador() * -1);
+			}
+		}
 		
 	}
 
 	public Fraccion sumar(Fraccion pFraccion) {
-		//Recuerda que luego hay que ejecutar simplificar para devolver el resultado simplificado
-		pFraccion.setNumerador(this.getNumerador() + pFraccion.getNumerador());
-		pFraccion.setDenominador(this.getDenominador() + pFraccion.getDenominador());
-		return pFraccion;
+		Fraccion resultado = pFraccion;
+		resultado.setNumerador(this.getNumerador() + pFraccion.getNumerador());
+		resultado.setDenominador(this.getDenominador() + pFraccion.getDenominador());
+		resultado.simplificar();
+		return resultado;
 	}
 
 	public Fraccion restar(Fraccion pFraccion) {
-		//Recuerda que luego hay que ejecutar simplificar para devolver el resultado simplificado
-		pFraccion.setNumerador(this.getNumerador() - pFraccion.getNumerador());
-		pFraccion.setDenominador(this.getDenominador() - pFraccion.getDenominador());
-		return pFraccion;
+		Fraccion resultado = pFraccion;
+		resultado.setNumerador(this.getNumerador() - pFraccion.getNumerador());
+		resultado.setDenominador(this.getDenominador() - pFraccion.getDenominador());
+		resultado.simplificar();
+		return resultado;
 	}
 
 	public Fraccion multiplicar(Fraccion pFraccion) {
-		//Recuerda que luego hay que ejecutar simplificar para devolver el resultado simplificado
-		pFraccion.setNumerador(this.getNumerador() * pFraccion.getNumerador());
-		pFraccion.setDenominador(this.getDenominador() * pFraccion.getDenominador());
+		Fraccion resultado = pFraccion;
+		resultado.setNumerador(this.getNumerador() * pFraccion.getNumerador());
+		resultado.setDenominador(this.getDenominador() * pFraccion.getDenominador());
+		resultado.simplificar();
 		return pFraccion;
 	}
 	
 	public Fraccion dividir(Fraccion pFraccion) {
-		// TODO Auto-generated method stub
-		return null;
+		Fraccion resultado = pFraccion;
+		resultado.setNumerador(this.getNumerador() * pFraccion.getDenominador());
+		resultado.setDenominador(this.getDenominador() * pFraccion.getNumerador());
+		resultado.simplificar();
+		return resultado;
 	}
 
 	public boolean esIgualQue(Fraccion pFraccion) {
