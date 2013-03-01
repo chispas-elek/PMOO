@@ -43,6 +43,10 @@ public class Fraccion implements IFraccion {
 
 	public void simplificar() {
 		int i = 2;
+		if(this.getDenominador() < 0) {
+			this.setNumerador(this.getNumerador() * -1);
+			this.setDenominador(this.getDenominador() * -1);
+		}
 		while(i<= this.getDenominador() && this.getDenominador() > 1 && this.getNumerador() > 1) {
 			if(this.getNumerador() % this.getDenominador() == 0) {
 				//La fracción es divisible entre si misma
@@ -56,10 +60,7 @@ public class Fraccion implements IFraccion {
 			if(this.getNumerador() % i !=0 || this.getDenominador() % i !=0) {
 				i++;
 			}
-			if(this.getDenominador() < 0) {
-				this.setNumerador(this.getNumerador() * -1);
-				this.setDenominador(this.getDenominador() * -1);
-			}
+			
 		}
 		
 	}
