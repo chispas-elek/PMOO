@@ -47,7 +47,7 @@ public class Fraccion implements IFraccion {
 			this.setNumerador(this.getNumerador() * -1);
 			this.setDenominador(this.getDenominador() * -1);
 		}
-		while(i<= this.getDenominador() && this.getDenominador() > 1 && this.getNumerador() > 1) {
+		while(i<= this.getDenominador() && this.getDenominador() > 1) {
 			if(this.getNumerador() % this.getDenominador() == 0) {
 				//La fracción es divisible entre si misma
 				this.setNumerador(this.getNumerador() / this.getDenominador());
@@ -66,31 +66,31 @@ public class Fraccion implements IFraccion {
 	}
 
 	public Fraccion sumar(Fraccion pFraccion) {
-		Fraccion resultado = pFraccion;
-		resultado.setNumerador(this.getNumerador() + pFraccion.getNumerador());
-		resultado.setDenominador(this.getDenominador() + pFraccion.getDenominador());
+		Fraccion resultado = new Fraccion(0,1);
+		resultado.setDenominador(this.getDenominador() * pFraccion.getDenominador());
+		resultado.setNumerador((this.getNumerador() * pFraccion.getDenominador()) + (pFraccion.getNumerador() * this.getDenominador()));
 		resultado.simplificar();
 		return resultado;
 	}
 
 	public Fraccion restar(Fraccion pFraccion) {
-		Fraccion resultado = pFraccion;
-		resultado.setNumerador(this.getNumerador() - pFraccion.getNumerador());
-		resultado.setDenominador(this.getDenominador() - pFraccion.getDenominador());
+		Fraccion resultado = new Fraccion(0,1);
+		resultado.setDenominador(this.getDenominador() * pFraccion.getDenominador());
+		resultado.setNumerador((this.getNumerador() * pFraccion.getDenominador()) - (pFraccion.getNumerador() * this.getDenominador()));
 		resultado.simplificar();
 		return resultado;
 	}
 
 	public Fraccion multiplicar(Fraccion pFraccion) {
-		Fraccion resultado = pFraccion;
+		Fraccion resultado = new Fraccion(0,1);
 		resultado.setNumerador(this.getNumerador() * pFraccion.getNumerador());
 		resultado.setDenominador(this.getDenominador() * pFraccion.getDenominador());
 		resultado.simplificar();
-		return pFraccion;
+		return resultado;
 	}
 	
 	public Fraccion dividir(Fraccion pFraccion) {
-		Fraccion resultado = pFraccion;
+		Fraccion resultado = new Fraccion(0,1);
 		resultado.setNumerador(this.getNumerador() * pFraccion.getDenominador());
 		resultado.setDenominador(this.getDenominador() * pFraccion.getNumerador());
 		resultado.simplificar();

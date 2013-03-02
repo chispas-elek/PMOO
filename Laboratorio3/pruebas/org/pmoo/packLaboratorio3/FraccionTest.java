@@ -31,6 +31,11 @@ public class FraccionTest {
 		lfr1 = null;
 		pfr2 = null;
 		pfr3 = null;
+		pfr4 = null;
+		pfr5 = null;
+		pfr6 = null;
+		pfr7 = null;
+		pfr8 = null;
 	}
 
 	@Test
@@ -69,8 +74,8 @@ public class FraccionTest {
 		assertEquals(-7, pfr6.getNumerador());
 		assertEquals(2, pfr6.getDenominador());
 		pfr7.simplificar();
-		assertEquals(-2, pfr7.getNumerador());
-		assertEquals(-3, pfr7.getDenominador());
+		assertEquals(2, pfr7.getNumerador());
+		assertEquals(3, pfr7.getDenominador());
 		pfr8.simplificar();
 		assertEquals(6, pfr8.getNumerador());
 		assertEquals(1, pfr8.getDenominador());
@@ -79,30 +84,30 @@ public class FraccionTest {
 
 	@Test
 	public void testSumar() {
-		pfr3 = lfr1.sumar(pfr2);
-		assertEquals(35, pfr3.getNumerador());
-		assertEquals(12, pfr3.getDenominador());
+		pfr3 = pfr3.sumar(pfr8);
+		assertEquals(6, pfr3.getNumerador());
+		assertEquals(1, pfr3.getDenominador());
 		
 	}
 
 	@Test
 	public void testRestar() {
-		pfr3 = lfr1.restar(pfr2);
-		assertEquals(1, pfr3.getNumerador());
-		assertEquals(4, pfr3.getDenominador());
+		pfr3 = pfr3.restar(pfr8);
+		assertEquals(-6, pfr3.getNumerador());
+		assertEquals(1, pfr3.getDenominador());
 	}
 
 	@Test
 	public void testMultiplicar() {
-		pfr3 = lfr1.multiplicar(pfr2);
-		assertEquals(1, pfr3.getNumerador());
-		assertEquals(8, pfr3.getDenominador());
+		pfr3 = pfr3.multiplicar(pfr8);
+		assertEquals(0, pfr3.getNumerador());
+		assertEquals(1, pfr3.getDenominador());
 	}
 
 	@Test
 	public void testDividir() {
-		pfr3 = lfr1.dividir(pfr2);
-		assertEquals(2, pfr3.getNumerador());
+		pfr3 = pfr3.dividir(pfr8);
+		assertEquals(0, pfr3.getNumerador());
 		assertEquals(1, pfr3.getDenominador());
 	}
 
