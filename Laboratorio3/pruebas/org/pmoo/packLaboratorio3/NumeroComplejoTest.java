@@ -44,21 +44,21 @@ public class NumeroComplejoTest {
 	@Test
 	public void testGetModulo() {
 		double result = Math.sqrt((Math.pow(2, 2)+Math.pow(3, 2)));
-		assertEquals(result, cnum1.getModulo());
+		assertEquals(result, cnum1.getModulo(),0.0001);
 	}
 
 	@Test
 	public void testSumar() {
 		cnum3 = new NumeroComplejo(cnum1.sumar(cnum2).getParteReal(), cnum1.sumar(cnum2).getParteImaginaria());
-		assertEquals(3, cnum3.getParteReal());
-		assertEquals(0, cnum3.getParteImaginaria());
+		assertEquals(3, cnum3.getParteReal(),0.0001);
+		assertEquals(0, cnum3.getParteImaginaria(),0.0001);
 	}
 
 	@Test
 	public void testMultiplicar() {
 		cnum3 = new NumeroComplejo(cnum1.multiplicar(cnum2).getParteReal(), cnum1.multiplicar(cnum2).getParteImaginaria());
-		assertEquals(11, cnum3.getParteReal());
-		assertEquals(-3, cnum3.getParteImaginaria());
+		assertEquals(11, cnum3.getParteReal(),0.0001);
+		assertEquals(-3, cnum3.getParteImaginaria(),0.0001);
 	}
 
 	@Test
