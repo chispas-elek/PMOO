@@ -30,15 +30,15 @@ public class NumeroComplejoTest {
 
 	@Test
 	public void testNumeroComplejo() {
-		assertEquals(2, cnum1.getParteReal());
-		assertEquals(3, cnum1.getParteImaginaria());
+		assertEquals(2, cnum1.getParteReal(),0.0001);
+		assertEquals(3, cnum1.getParteImaginaria(),0.0001);
 		
 	}
 
 	@Test
 	public void testGetAngulo() {
 		double result = Math.atan2(3, 2);
-		assertEquals(result, cnum1.getAngulo());
+		assertEquals(result, cnum1.getAngulo(),0.0001);
 	}
 
 	@Test
