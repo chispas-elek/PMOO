@@ -1,4 +1,4 @@
-package org.pmoo.packInterfacesLaboratorio3;
+package org.pmoo.packlaboratorio3;
 
 public interface IComplejo
 {

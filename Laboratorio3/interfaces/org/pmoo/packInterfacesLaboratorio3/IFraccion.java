@@ -1,4 +1,4 @@
-package org.pmoo.packInterfacesLaboratorio3;
+package org.pmoo.packlaboratorio3;
 
 import org.pmoo.packLaboratorio3.Fraccion;
 
