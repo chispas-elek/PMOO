@@ -1,7 +1,7 @@
 //Author Mulero Martínez, Rubén
 //Author Esteban García, Asier
 
-package org.pmoo.packLaboratorio3;
+package org.pmoo.packlaboratorio3;
 
 public class Operacion {
 

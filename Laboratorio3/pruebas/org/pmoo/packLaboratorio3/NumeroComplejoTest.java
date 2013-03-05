@@ -1,7 +1,7 @@
 //Author Mulero Martínez, Rubén
 //Author Esteban García, Asier
 
-package org.pmoo.packLaboratorio3;
+package org.pmoo.packlaboratorio3;
 
 import static org.junit.Assert.*;
 
@@ -30,8 +30,8 @@ public class NumeroComplejoTest {
 
 	@Test
 	public void testNumeroComplejo() {
-		assertEquals(2, cnum1.getParteReal(),0.0001);
-		assertEquals(3, cnum1.getParteImaginaria(),0.0001);
+		assertEquals(2, cnum1.getParteReal(), 0.0001);
+		assertEquals(3, cnum1.getParteImaginaria(), 0.0001);
 		
 	}
 

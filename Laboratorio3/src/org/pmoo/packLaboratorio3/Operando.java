@@ -1,7 +1,7 @@
 //Author -> Mulero Martínez, Rubén
 //Auhtor -> Esteban García, Asier
 
-package org.pmoo.packLaboratorio3;
+package org.pmoo.packlaboratorio3;
 
 public class Operando {
 
@@ -41,6 +41,9 @@ public class Operando {
 	}
 	
 	public Operando dividir(Operando pOperando) {
+		if(pOperando.getValor() == 0){
+			System.out.println("No se puede dividir entre 0");
+		}
 		Operando value = new Operando(this.getValor() / pOperando.getValor());
 		//ATENCION SE DEBE CONTROLAR LAS DIVISIONES ENTRE 0
 		return value; 

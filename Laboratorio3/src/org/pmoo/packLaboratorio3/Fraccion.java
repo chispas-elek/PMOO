@@ -1,7 +1,7 @@
 //Author Mulero Martínez, Rubén
 //Author Esteban García, Asier
 
-package org.pmoo.packLaboratorio3;
+package org.pmoo.packlaboratorio3;
 import org.pmoo.packInterfacesLaboratorio3.IFraccion;
 
 public class Fraccion implements IFraccion {

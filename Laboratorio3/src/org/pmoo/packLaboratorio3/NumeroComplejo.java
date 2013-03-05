@@ -1,7 +1,7 @@
 //Author -> Mulero Martínez, Rubén
 //Auhtor -> Esteban García, Asier
 
-package org.pmoo.packLaboratorio3;
+package org.pmoo.packlaboratorio3;
 
 import org.pmoo.packInterfacesLaboratorio3.IComplejo;
 import java.lang.Math;
