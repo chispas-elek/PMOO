@@ -19,7 +19,11 @@ public class Cliente
    public Cliente(int pId, String pNombre, String pClave,
 		   double pSaldo, boolean pPref)
    {
-	
+	   this.idCliente = pId;
+	   this.nombre = pNombre;
+	   this.clave = pClave;
+	   this.saldo = pSaldo;
+	   this.esPreferente = pPref;
    }
    
    // getters y setters 
@@ -84,16 +88,16 @@ public class Cliente
    
    public void actualizarSaldo(String pClaveTecleada, double pCantidad)
    {
+	   
 	   if(this.comprobarClave(pClaveTecleada)) {
 		   if(pCantidad >= 0 && (this.getSaldo() - pCantidad) >= 0) {
-		   this.setSaldo(this.getSaldo()-pCantidad);
-		   System.out.println(this.getSaldo());
+			   this.setSaldo(this.getSaldo()-pCantidad);
+			   System.out.println("Estimado "+this.getNombre()+" su saldo actual ahora es de "+this.getSaldo());
+		   }else if(pCantidad < 0) {
+			   System.out.println("Cantidad introducida negativa");
+		   }else if((this.getSaldo() - pCantidad) < 0) {
+			   System.out.println("Cantidad introducida demasiado grande");
 		   }
-	   }else if(pCantidad < 0) {
-		   System.out.println("Cantidad introducida negativa");
-	   }
-	   else if((this.getSaldo() - pCantidad) < 0) {
-		   System.out.println("Cantidad introducida demasiado grande");
 	   }
 	   else {
 		   System.out.println("Código incorrecto");
