@@ -44,6 +44,7 @@ public class ClienteTest {
 	@Test
 	public void testObtenerSaldo() {
 		assertEquals(12548894,cli1.obtenerSaldo("tridente"),0.0001);
+		assertEquals(0.0,cli1.obtenerSaldo("hjhjhjhj"),0.0001);
 	}
 
 	@Test
@@ -52,7 +53,7 @@ public class ClienteTest {
 		assertEquals(12548890,cli1.obtenerSaldo("tridente"),0.0001);
 		cli1.actualizarSaldo("tridente",-34);
 		assertEquals(12548890,cli1.obtenerSaldo("tridente"),0.0001);
-		cli1.actualizarSaldo("tridente", 999999999);
+		cli1.actualizarSaldo("tridente", 12548899);
 		assertEquals(12548890,cli1.obtenerSaldo("tridente"),0.0001);
 		cli1.actualizarSaldo("charlie", 89);
 		assertEquals(12548890,cli1.obtenerSaldo("tridente"),0.0001);

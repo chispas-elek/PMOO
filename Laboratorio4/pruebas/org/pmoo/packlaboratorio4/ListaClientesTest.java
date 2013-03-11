@@ -49,6 +49,8 @@ public class ListaClientesTest {
 		l1.anadirCliente(1, "Ambrosio", "espinete", 13234523, true);
 		cli1 = l1.buscarClientePorId(1);
 		assertTrue(cli1.tieneMismoId(1));
+		cli1 = l1.buscarClientePorId(2);
+		assertFalse(cli1.tieneMismoId(1));
 	}
 
 	@Test

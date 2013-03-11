@@ -15,7 +15,7 @@ public class OperacionTest {
 	Operacion op1;
 	@Before
 	public void setUp() throws Exception {
-		op1 = new Operacion(111,1,"tridente",4);
+		op1 = new Operacion(111,1,"tridente",4.0000001);
 	}
 
 	@After
@@ -37,10 +37,10 @@ public class OperacionTest {
 	public void testRealizarOperacion() {
 		//Creamos una lista de clientes
 		ListaClientes l1 = ListaClientes.getListaClientes();
-		l1.anadirCliente(1,"Paco","tridente",12548894,true);
+		l1.anadirCliente(1,"Paco","tridente",12548894.0000001,true);
 		op1.realizarOperacion();
 		Cliente cl1 = l1.buscarClientePorId(1);
-		assertEquals(12548890,cl1.obtenerSaldo("tridente"),0.0001);
+		assertEquals(12548890.0000000,cl1.obtenerSaldo("tridente"),0.0001);
 	}
 
 }

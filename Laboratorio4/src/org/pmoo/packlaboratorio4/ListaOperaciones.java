@@ -52,7 +52,7 @@ public class ListaOperaciones
  	}
 
   	
- 	private Operacion buscarOperacionPorId(int pId)
+ 	public Operacion buscarOperacionPorId(int pId)
  	{
  		Operacion lOp = null;
   		Iterator<Operacion> it = this.getIterador();
