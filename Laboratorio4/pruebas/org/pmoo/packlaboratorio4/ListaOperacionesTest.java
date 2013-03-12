@@ -48,7 +48,15 @@ public class ListaOperacionesTest {
 	}
 	
 	@Test
-	buscarOperacionPorId
+	public void testBuscarOperacionPorId() {
+		//Éste método es indeterminado, porque se suoone que ésta clase debería ser privada pero el WebCat la quiere como pública.
+		lO1.anadirOperacion(111, 1, "tridente", 4.0000001);
+		Operacion op1 = lO1.buscarOperacionPorId(111);
+		assertTrue(op1.tieneMismoId(111));
+		//Si no existe la operacion
+		op1 = lO1.buscarOperacionPorId(121);
+		assertEquals(null,op1);
+	}
 	
 
 	@Test
