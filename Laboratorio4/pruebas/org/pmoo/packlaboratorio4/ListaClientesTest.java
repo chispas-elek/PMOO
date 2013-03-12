@@ -50,7 +50,7 @@ public class ListaClientesTest {
 		cli1 = l1.buscarClientePorId(1);
 		assertTrue(cli1.tieneMismoId(1));
 		cli1 = l1.buscarClientePorId(2);
-		assertFalse(cli1.tieneMismoId(1));
+		assertEquals(null,cli1);
 	}
 
 	@Test

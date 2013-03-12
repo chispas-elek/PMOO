@@ -44,7 +44,9 @@ public class ListaOperacionesTest {
 	public void testAnadirOperacion() {
 		lO1.anadirOperacion(111, 1, "tridente", 4.0000001);
 		assertEquals(1,lO1.cantidadOperaciones());
-		
+		//Comprobamos que ocurre si añadimos una operacion ya existente
+		lO1.anadirOperacion(111, 1, "tridente", 4.0000001);
+		assertEquals(1,lO1.cantidadOperaciones());
 	}
 	
 	@Test
