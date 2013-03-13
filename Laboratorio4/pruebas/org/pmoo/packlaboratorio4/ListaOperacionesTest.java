@@ -49,7 +49,7 @@ public class ListaOperacionesTest {
 		assertEquals(1,lO1.cantidadOperaciones());
 	}
 	
-	@Test
+	/*@Test
 	public void testBuscarOperacionPorId() {
 		//Éste método es indeterminado, porque se suoone que ésta clase debería ser privada pero el WebCat la quiere como pública.
 		lO1.anadirOperacion(111, 1, "tridente", 4.0000001);
@@ -59,7 +59,7 @@ public class ListaOperacionesTest {
 		op1 = lO1.buscarOperacionPorId(121);
 		assertEquals(null,op1);
 	}
-	
+	*/
 
 	@Test
 	public void testRealizarOperaciones() {
