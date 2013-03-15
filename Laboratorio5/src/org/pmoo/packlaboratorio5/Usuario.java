@@ -90,6 +90,13 @@ public class Usuario
 	
 	public void imprimir()
 	{
-	
+		//Imprimer el usuario por pantalla y si tiene libros su lista de libros.
+		System.out.println("El usuario "+this.getNombreCompleto()+" tiene los siguientes libros:");
+		if(this.cuantosLibrosTiene() > 0) {
+			System.out.println(this.cuantosLibrosTiene()+" libros");
+			this.librosEnPrestamo.imprimir();
+		}else {
+			System.out.println("0 Libros");
+		}
 	}
 }
