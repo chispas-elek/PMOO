@@ -106,9 +106,17 @@ public class UsuarioTest extends TestCase
 		usuario1.anadirLibro(l3);
 		assertTrue(usuario1.haAlcanzadoElMaximo());
 	}
+	
 	@Test
 	public void testEliminarLibro() {
-		
+		//Comprobar que sin libros es capaz de hacer algo o da error.
+		//Comprobar que elimina un libro de forma correcta.
+		fail("no implementado");
+	}
+	
+	@Test
+	public void testLoTieneEnPrestamo() {
+		fail("No impplementado");
 	}
 }
 

@@ -95,8 +95,13 @@ public class Catalogo
  		Libro l1 = this.lista.buscarLibroPorId(pIdLibro);
  		//Comprobamos si existe el libro
  		if(l1 != null) {
- 			//A decidir.....
- 			//#################################
+ 			//Comprobamos si un usuario al menos tiene el libro
+ 			ListaUsuarios usu = ListaUsuarios.getListaUsuarios();
+ 			if(usu.quienLoTienePrestado(l1) != null) {
+ 				this.lista.eliminarLibro(l1);
+ 			}else {
+ 				System.out.println("Un usuario tiene el libro en préstamo, no puedes descatalogarlo hasta que dicho usuario lo devuelva");
+ 			}
  		}else {
  			System.out.println("El libro que intentas descatalogar no existe");
  		}
