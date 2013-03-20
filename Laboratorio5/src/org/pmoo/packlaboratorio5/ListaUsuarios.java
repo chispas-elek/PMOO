@@ -68,27 +68,52 @@ public class ListaUsuarios
    	
    	public void darDeAltaUsuario(Usuario pUsuario)
    	{
-	   	
+	   	if(!this.existeUsuarioConMismoId(pUsuario)) {
+	   		this.lista.add(pUsuario);
+	   	}else {
+	   		System.out.print("El usuario que intenta añadir, ya existe en la lista de usuarios");
+	   	}
    	}
 
 	public void darDeBajaUsuario(int pIdUsuario)
 	{
-		
+		Usuario usu = this.buscarUsuarioPorId(pIdUsuario);
+		if(this.existeUsuarioConMismoId(usu)) {
+			this.lista.remove(usu);
+		}
    	}
 
    	public Usuario quienLoTienePrestado(Libro pLibro)
    	{
-   		
+   		Usuario usu = null;
+   		Iterator<Usuario> it = this.getIterador();
+   		boolean encontrado = false;
+   		if(!encontrado && it.hasNext()) {
+   			usu = it.next();
+   			if(usu.loTieneEnPrestamo(pLibro)) {
+   				encontrado = true;
+   			}else {
+   				usu = null;
+   			}
+   		}
+   		return usu;
    	}
 
    	public void imprimir()
    	{	
-   		 
+   		 System.out.println("En total el sistema tiene "+this.lista.size()+" usuarios");
+   		 Usuario usu;
+   		 Iterator<Usuario> it = this.getIterador();
+   		 while(it.hasNext()) {
+   			 usu = it.next();
+   			 usu.imprimir();
+   		 }
    	}
    
    	public void resetear()
    	{
-   		
+   		this.lista = null;
+   		this.lista = new ArrayList<Usuario>();
    	}
 
 }
