@@ -69,7 +69,46 @@ public class UsuarioTest extends TestCase
 		usuario1.imprimir();
 		System.out.println("\n===============================================================");
 
-		fail("Mira los mensajes que se muestran en la consola del sistema, y si todo ha ido bien elimina o comenta este fail");
+		//fail("Mira los mensajes que se muestran en la consola del sistema, y si todo ha ido bien elimina o comenta este fail");
+	}
+	@Test
+	public void testUsuario () {
+		assertTrue(usuario1.tieneMismoId(usuario1));
+	}
+	
+	@Test
+	public void testTieneEsteId() {
+		assertTrue(usuario1.tieneEsteId(1099));
+	}
+	
+	@Test
+	public void testTieneMismoId() {
+		assertTrue(usuario1.tieneMismoId(usuario1));
+	}
+	
+	@Test
+	public void testHaAlcanzadoElMaximo() {
+		assertFalse(usuario1.haAlcanzadoElMaximo());
+		Libro l3=new Libro("Me lo he inventado", "Enigma Furgencio",3);
+		usuario1.anadirLibro(l1);
+		usuario1.anadirLibro(l2);
+		usuario1.anadirLibro(l3);
+		assertTrue(usuario1.haAlcanzadoElMaximo());
+	}
+	
+	@Test
+	public void testAnadirLibro() {
+		Libro l3=new Libro("Me lo he inventado", "Enigma Furgencio",3);
+		usuario1.anadirLibro(l1);
+		assertFalse(usuario1.haAlcanzadoElMaximo());
+		usuario1.anadirLibro(l2);
+		assertFalse(usuario1.haAlcanzadoElMaximo());
+		usuario1.anadirLibro(l3);
+		assertTrue(usuario1.haAlcanzadoElMaximo());
+	}
+	@Test
+	public void testEliminarLibro() {
+		
 	}
 }
 

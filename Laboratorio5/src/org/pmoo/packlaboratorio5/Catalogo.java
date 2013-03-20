@@ -1,7 +1,5 @@
 package org.pmoo.packlaboratorio5;
 
-import java.util.ArrayList;
-
 public class Catalogo
 {
 	// atributos
@@ -70,26 +68,50 @@ public class Catalogo
 		ListaUsuarios lUsu = ListaUsuarios.getListaUsuarios();
 		Libro lib = this.lista.buscarLibroPorId(pIdLibro);
 		//Comprobamos que el libro exista.
+		if(lib != null) {
+			//Buscar el usuario que tiene el libro.
+			Usuario usu = lUsu.quienLoTienePrestado(lib);
+			if(usu != null) {
+				usu.eliminarLibro(lib);
+			}else {
+				System.out.println("No existe ningun usuario con el libro prestado");
+			}
+		}else {
+			System.out.println("El libro que intentas devolver no existe");
+		}
 	}
  	
  	public void catalogarLibro(Libro pLibro)
  	{
-		
+ 		if(!this.lista.esta(pLibro)) {
+ 			this.lista.anadirLibro(pLibro);
+ 		}else {
+ 			System.out.println("El libro que intentas introducir ya existe");
+ 		}
  	}
 
  	public void descatalogarLibro(int pIdLibro)
  	{
-		
+ 		Libro l1 = this.lista.buscarLibroPorId(pIdLibro);
+ 		//Comprobamos si existe el libro
+ 		if(l1 != null) {
+ 			//A decidir.....
+ 			//#################################
+ 		}else {
+ 			System.out.println("El libro que intentas descatalogar no existe");
+ 		}
  	}
 
  	public void imprimir()
  	{
- 		 		
+ 		System.out.println("El catálogo tiene un tamaño de "+this.lista.getTamano());
+ 		this.lista.imprimir();
  	}
 
  	public void resetear()
  	{
- 		
+ 		this.lista = null;
+ 		this.lista = new ListaLibros();
  	}
  	
 }	
