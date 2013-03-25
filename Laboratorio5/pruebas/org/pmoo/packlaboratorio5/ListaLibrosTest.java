@@ -49,7 +49,50 @@ public class ListaLibrosTest extends TestCase
 		lista1.imprimir();
 		System.out.println("\n===============================================================");
 	
-		fail("Mira los mensajes que se muestran en la consola del sistema, y si todo ha ido bien elimina o comenta este fail");
 	}
-
+	
+	@Test
+	public void testListaLibros() {
+		assertEquals(0,lista1.getTamano());
+	}
+	
+	@Test
+	public void testGetTamano() {
+		lista1.anadirLibro(l1);
+		lista1.anadirLibro(l2);
+		assertEquals(2,lista1.getTamano());
+	}
+	
+	@Test
+	public void testBuscarLibroPorId() {
+		lista1.anadirLibro(l1);
+		lista1.anadirLibro(l2);
+		assertEquals(l2,lista1.buscarLibroPorId(2));
+		assertEquals(l1,lista1.buscarLibroPorId(1));
+		assertEquals(null,lista1.buscarLibroPorId(3));
+	}
+	
+	@Test
+	public void testEsta() {
+		lista1.anadirLibro(l1);
+		assertTrue(lista1.esta(l1));
+		assertFalse(lista1.esta(l2));
+	}
+	
+	@Test
+	public void testAnadirLibro() {
+		lista1.anadirLibro(l1);
+		assertEquals(l1,lista1.buscarLibroPorId(1));
+		lista1.anadirLibro(l1);
+		assertEquals(l1,lista1.buscarLibroPorId(1));
+	}
+	
+	@Test
+	public void testEliminarLibro() {
+		lista1.anadirLibro(l1);
+		lista1.eliminarLibro(l1);
+		assertEquals(0,lista1.getTamano());
+		lista1.eliminarLibro(l1);
+		assertEquals(0,lista1.getTamano());
+	}
 }

@@ -36,6 +36,8 @@ public class ListaLibros
 		   l1 = it.next();
 		   if(l1.getIdLibro() == pIdLibro) {
 			   found = true;
+		   }else {
+			   l1 = null;
 		   }
 	   }
 	   return l1;
@@ -49,12 +51,16 @@ public class ListaLibros
 	{
 	   if(!this.esta(pLibro)) {
 		   this.lista.add(pLibro);
+	   }else {
+		   System.out.println("El libro que intenta añadir ya existe");
 	   }
 	}
 	public void eliminarLibro(Libro pLibro)
 	{
 	   if(this.esta(pLibro)) {
 		   this.lista.remove(pLibro);
+	   }else {
+		   System.out.println("El libro que intenta eliminar no existe");
 	   }
 	}
 	

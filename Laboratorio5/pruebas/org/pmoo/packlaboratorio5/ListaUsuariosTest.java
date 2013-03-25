@@ -129,7 +129,22 @@ public class ListaUsuariosTest extends TestCase
 	
 	@Test
 	public void testQuienLoTienePrestado() {
-		
+		ListaUsuarios.getListaUsuarios().darDeAltaUsuario(u1);
+		ListaUsuarios.getListaUsuarios().darDeAltaUsuario(u2);
+		u1.anadirLibro(l1);
+		u2.anadirLibro(l2);
+		assertEquals(u1,ListaUsuarios.getListaUsuarios().quienLoTienePrestado(l1));
+		assertEquals(null,ListaUsuarios.getListaUsuarios().quienLoTienePrestado(l3));
+		assertEquals(u2,ListaUsuarios.getListaUsuarios().quienLoTienePrestado(l2));
+	}
+	
+	@Test
+	public void testResetear() {
+		ListaUsuarios.getListaUsuarios().darDeAltaUsuario(u1);
+		ListaUsuarios.getListaUsuarios().darDeAltaUsuario(u2);
+		ListaUsuarios.getListaUsuarios().darDeAltaUsuario(u3);
+		ListaUsuarios.getListaUsuarios().resetear();
+		assertEquals(0,ListaUsuarios.getListaUsuarios().getTamano());
 	}
 }
 

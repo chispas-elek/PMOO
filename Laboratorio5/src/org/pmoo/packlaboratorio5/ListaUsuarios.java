@@ -92,7 +92,7 @@ public class ListaUsuarios
    		Usuario usu = null;
    		Iterator<Usuario> it = this.getIterador();
    		boolean encontrado = false;
-   		if(!encontrado && it.hasNext()) {
+   		while(!encontrado && it.hasNext()) {
    			usu = it.next();
    			if(usu.loTieneEnPrestamo(pLibro)) {
    				encontrado = true;

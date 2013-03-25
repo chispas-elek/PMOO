@@ -36,8 +36,31 @@ public class LibroTest extends TestCase
 		l1.imprimir();
 		System.out.println("\n===============================================================");
 	
-		fail("Mira los mensajes que se muestran en la consola del sistema, y si todo ha ido bien elimina o comenta este fail");
 	}
 
-   
+    @Test
+    public void testLibro() {
+    	assertEquals("El amor dura tres años",l1.getTitulo());
+    }
+    
+    @Test
+    public void testGetTitulo() {
+    	assertEquals("El amor dura tres años",l1.getTitulo());
+    }
+    
+    @Test
+    public void testGetIdLibro() {
+    	assertEquals(4,l1.getIdLibro());
+    }
+    
+    @Test
+    public void testGetAutor() {
+    	assertEquals("Frederic Beigbeder",l1.getAutor());
+    }
+    
+    @Test
+    public void testTieneEsteId() {
+    	assertTrue(l1.tieneEsteId(4));
+    	assertFalse(l1.tieneEsteId(1));
+    }
 }
