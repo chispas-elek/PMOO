@@ -47,6 +47,8 @@ public class ListaUsuarios
    			usu = it.next();
    			if(usu.tieneEsteId(pId)) {
    				encontrado = true;
+   			}else {
+   				usu = null;
    			}
    		}
    		return usu;
@@ -80,6 +82,8 @@ public class ListaUsuarios
 		Usuario usu = this.buscarUsuarioPorId(pIdUsuario);
 		if(this.existeUsuarioConMismoId(usu)) {
 			this.lista.remove(usu);
+		}else {
+			System.out.println("El ususarios que intenta eliminar, no existe en la lista de usuarios");
 		}
    	}
 

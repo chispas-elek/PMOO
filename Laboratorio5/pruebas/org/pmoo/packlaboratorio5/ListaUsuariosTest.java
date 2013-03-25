@@ -79,9 +79,57 @@ public class ListaUsuariosTest extends TestCase
 		ListaUsuarios.getListaUsuarios().darDeBajaUsuario(3);
 		assertEquals(0,ListaUsuarios.getListaUsuarios().getTamano());	
 						
-		fail("Mira los mensajes que se muestran en la consola del sistema, y si todo ha ido bien elimina o comenta este fail");
 		
 	}
 		
+	@Test
+	public void testGetListaUsuarios() {
+		assertEquals(0,ListaUsuarios.getListaUsuarios().getTamano());
+	}
+	
+	@Test
+	public void testGetTamano() {
+		assertEquals(0,ListaUsuarios.getListaUsuarios().getTamano());
+		ListaUsuarios.getListaUsuarios().darDeAltaUsuario(u1);
+		assertEquals(1,ListaUsuarios.getListaUsuarios().getTamano());
+	}
+	
+	@Test
+	public void testBuscarUsuarioPorId() {
+		ListaUsuarios.getListaUsuarios().darDeAltaUsuario(u1);
+		assertEquals(null,ListaUsuarios.getListaUsuarios().buscarUsuarioPorId(2));
+		assertEquals(u1,ListaUsuarios.getListaUsuarios().buscarUsuarioPorId(1));
+	}
+	
+	@Test
+	public void testExisteUsuarioConMismoId() {
+		ListaUsuarios.getListaUsuarios().darDeAltaUsuario(u1);
+		assertFalse(ListaUsuarios.getListaUsuarios().existeUsuarioConMismoId(u2));
+		assertTrue(ListaUsuarios.getListaUsuarios().existeUsuarioConMismoId(u1));
+	}
+	
+	@Test
+	public void testDarDeAltaUsuario() {
+		ListaUsuarios.getListaUsuarios().darDeAltaUsuario(u1);
+		assertTrue(ListaUsuarios.getListaUsuarios().existeUsuarioConMismoId(u1));
+		ListaUsuarios.getListaUsuarios().darDeAltaUsuario(u1);
+		assertTrue(ListaUsuarios.getListaUsuarios().existeUsuarioConMismoId(u1));
+	}
+	
+	@Test
+	public void testDarDeBajaUsuario() {
+		ListaUsuarios.getListaUsuarios().darDeAltaUsuario(u1);
+		ListaUsuarios.getListaUsuarios().darDeAltaUsuario(u2);
+		//Null Pointer Exception, revisar sentencias de la clase usuario para evitar que busque usuarios si NULL
+		//ListaUsuarios.getListaUsuarios().darDeBajaUsuario(3);
+		assertEquals(2,ListaUsuarios.getListaUsuarios().getTamano());
+		ListaUsuarios.getListaUsuarios().darDeBajaUsuario(2);
+		assertEquals(1,ListaUsuarios.getListaUsuarios().getTamano());
+	}
+	
+	@Test
+	public void testQuienLoTienePrestado() {
+		
+	}
 }
 

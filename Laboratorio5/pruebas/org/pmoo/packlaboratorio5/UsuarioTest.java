@@ -111,12 +111,24 @@ public class UsuarioTest extends TestCase
 	public void testEliminarLibro() {
 		//Comprobar que sin libros es capaz de hacer algo o da error.
 		//Comprobar que elimina un libro de forma correcta.
-		fail("no implementado");
+		usuario1.eliminarLibro(l1);
+		assertFalse(usuario1.haAlcanzadoElMaximo());
+		usuario1.anadirLibro(l1);
+		usuario1.anadirLibro(l2);
+		Libro l3=new Libro("Me lo he inventado", "Enigma Furgencio",3);
+		usuario1.anadirLibro(l3);
+		usuario1.eliminarLibro(l3);
+		assertFalse(usuario1.haAlcanzadoElMaximo());
+		usuario1.eliminarLibro(l3);
+		assertFalse(usuario1.haAlcanzadoElMaximo());
 	}
 	
 	@Test
 	public void testLoTieneEnPrestamo() {
-		fail("No impplementado");
+		assertFalse(usuario1.loTieneEnPrestamo(l1));
+		usuario1.anadirLibro(l1);
+		assertTrue(usuario1.loTieneEnPrestamo(l1));
+		assertFalse(usuario1.loTieneEnPrestamo(l2));
 	}
 }
 
