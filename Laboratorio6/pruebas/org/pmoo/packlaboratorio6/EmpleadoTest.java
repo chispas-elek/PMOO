@@ -1,3 +1,6 @@
+//Author -> Mulero Martínez, Rubén
+//Author -> Esteban García, Asier
+
 package org.pmoo.packlaboratorio6;
 
 import static org.junit.Assert.*;
