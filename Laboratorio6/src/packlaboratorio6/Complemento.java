@@ -4,8 +4,9 @@
 package packlaboratorio6;
 
 public class Complemento extends Taxed {
-
-	//Variables
+	
+	//Variables 
+	private  
 	
 	//Constructor
 	
