@@ -13,6 +13,10 @@ public class Concepto {
 		this.importe = pImporte;
 	}
 	
+	public Concepto() {
+		
+	}
+	
 	//Getters & Setters
 	public double getImporte() {
 		return this.importe;
@@ -21,4 +25,7 @@ public class Concepto {
 	public void setImporte(double pImporte) {
 		this.importe = pImporte;
 	}
+	
+	//Methods
+	
 }

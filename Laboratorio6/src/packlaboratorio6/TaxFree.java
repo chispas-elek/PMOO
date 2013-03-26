@@ -1,3 +1,6 @@
+//Author -> Mulero Martínez, Rubén
+//Author -> Esteban García, Asier
+
 package packlaboratorio6;
 
 public class TaxFree extends Concepto {
@@ -11,6 +14,11 @@ public class TaxFree extends Concepto {
 		super(pImporte);
 		this.descripcion = pDescripcion;
 		this.horas = pHoras;
+		//this.setImporte(pImporte);
+	}
+	
+	public TaxFree() {
+		
 	}
 	
 	//Getters & Setters
