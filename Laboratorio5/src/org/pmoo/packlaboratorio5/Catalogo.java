@@ -97,7 +97,7 @@ public class Catalogo
  		if(l1 != null) {
  			//Comprobamos si un usuario al menos tiene el libro
  			ListaUsuarios usu = ListaUsuarios.getListaUsuarios();
- 			if(usu.quienLoTienePrestado(l1) != null) {
+ 			if(usu.quienLoTienePrestado(l1) == null) {
  				this.lista.eliminarLibro(l1);
  			}else {
  				System.out.println("Un usuario tiene el libro en préstamo, no puedes descatalogarlo hasta que dicho usuario lo devuelva");

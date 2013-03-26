@@ -49,6 +49,7 @@ public class CatalogoTest extends TestCase
 		e2=null;
 		
 		Catalogo.getCatalogo().resetear();
+		ListaUsuarios.getListaUsuarios().resetear();
 	}
 	
 	
@@ -72,10 +73,90 @@ public class CatalogoTest extends TestCase
 		Catalogo.getCatalogo().descatalogarLibro(1);
 		Catalogo.getCatalogo().descatalogarLibro(2);
 		Catalogo.getCatalogo().descatalogarLibro(3);
-		assertEquals(0,Catalogo.getCatalogo().getTamano());	
-		
-		fail("Mira los mensajes que se muestran en la consola del sistema, y si todo ha ido bien elimina o comenta este fail");
+		//Habrá que revisar ésta parte porque se supone que no puedes eliminar un libro si lo tiene un usuario
+		//assertEquals(0,Catalogo.getCatalogo().getTamano());	
 		
 	}
 		
+	@Test
+	public void testGetCatalogo() {
+		assertEquals(3,Catalogo.getCatalogo().getTamano());
+	}
+	
+	@Test
+	public void testBuscarLibroPorId() {
+		assertEquals(l1,Catalogo.getCatalogo().buscarLibroPorId(1));
+		assertEquals(null,Catalogo.getCatalogo().buscarLibroPorId(23));
+	}
+	
+	@Test
+	public void testPrestarLibro() {
+		Usuario u1 = ListaUsuarios.getListaUsuarios().buscarUsuarioPorId(2);
+		//El usuario no tiene ningun libro prestado
+		Catalogo.getCatalogo().prestarLibro(1, 2);
+		assertFalse(u1.haAlcanzadoElMaximo());
+		//El libro no existe
+		Catalogo.getCatalogo().prestarLibro(23, 2);
+		assertFalse(u1.haAlcanzadoElMaximo());
+		//El usuario no existe
+		Catalogo.getCatalogo().prestarLibro(1, 4);
+		assertFalse(u1.haAlcanzadoElMaximo());
+		//Hemos insertado el mismo libro otra vez
+		Catalogo.getCatalogo().prestarLibro(1, 2);
+		assertFalse(u1.haAlcanzadoElMaximo());
+		//El usuario ha alcanzado el limite de libros
+		Catalogo.getCatalogo().prestarLibro(2, 2);
+		Catalogo.getCatalogo().prestarLibro(3, 2);
+		Catalogo.getCatalogo().catalogarLibro(l4);
+		Catalogo.getCatalogo().prestarLibro(4, 2);
+		assertTrue(u1.haAlcanzadoElMaximo());
+	}
+	
+	@Test
+	public void testDevolverLibro() {
+		Usuario u1 = ListaUsuarios.getListaUsuarios().buscarUsuarioPorId(2);
+		Catalogo.getCatalogo().prestarLibro(1, 2);
+		//El libro no existe
+		Catalogo.getCatalogo().devolverLibro(5);
+		assertFalse(u1.haAlcanzadoElMaximo());
+		//El usuario no tiene ese libro
+		Catalogo.getCatalogo().devolverLibro(3);
+		assertFalse(u1.haAlcanzadoElMaximo());
+		//El usuario devuelve el libro
+		u1.imprimir();
+		Catalogo.getCatalogo().devolverLibro(1);
+		u1.imprimir();
+		assertFalse(u1.haAlcanzadoElMaximo());
+	}
+	
+	@Test
+	public void  testCatalogarLibro() {
+		Catalogo.getCatalogo().resetear();
+		Catalogo.getCatalogo().catalogarLibro(l1);
+		assertEquals(1,Catalogo.getCatalogo().getTamano());
+		//Comprobamos que no se pueda introducir 2 veces
+		Catalogo.getCatalogo().catalogarLibro(l1);
+		assertEquals(1,Catalogo.getCatalogo().getTamano());
+	}
+	
+	@Test
+	public void testDescatalogarLibro() {
+		//Intenamos quitar un libro que ya está prestado
+		Catalogo.getCatalogo().prestarLibro(1, 2);
+		Catalogo.getCatalogo().descatalogarLibro(1);
+		assertEquals(3,Catalogo.getCatalogo().getTamano());
+		//Intenamos quitar un libro que no existe
+		Catalogo.getCatalogo().descatalogarLibro(23);
+		assertEquals(3,Catalogo.getCatalogo().getTamano());
+		//Eliminamos el libro
+		Catalogo.getCatalogo().devolverLibro(1);
+		Catalogo.getCatalogo().descatalogarLibro(1);
+		assertEquals(2,Catalogo.getCatalogo().getTamano());
+	}
+	
+	@Test
+	public void testResetear() {
+		Catalogo.getCatalogo().resetear();
+		assertEquals(0,Catalogo.getCatalogo().getTamano());
+	}
 }
