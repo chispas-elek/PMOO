@@ -12,7 +12,7 @@ public class ListaUsuariosTest extends TestCase
 	private Usuario u1;
 	private Usuario u2;
 	private Usuario u3;
-	private Usuario auxUser;
+	//private Usuario auxUser;
 	
 	private Libro l1;
 	private Libro l2;
@@ -120,8 +120,7 @@ public class ListaUsuariosTest extends TestCase
 	public void testDarDeBajaUsuario() {
 		ListaUsuarios.getListaUsuarios().darDeAltaUsuario(u1);
 		ListaUsuarios.getListaUsuarios().darDeAltaUsuario(u2);
-		//Null Pointer Exception, revisar sentencias de la clase usuario para evitar que busque usuarios si NULL
-		//ListaUsuarios.getListaUsuarios().darDeBajaUsuario(3);
+		ListaUsuarios.getListaUsuarios().darDeBajaUsuario(3);
 		assertEquals(2,ListaUsuarios.getListaUsuarios().getTamano());
 		ListaUsuarios.getListaUsuarios().darDeBajaUsuario(2);
 		assertEquals(1,ListaUsuarios.getListaUsuarios().getTamano());

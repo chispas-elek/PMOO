@@ -43,7 +43,7 @@ public class ListaUsuarios
    		Iterator<Usuario> it = this.getIterador();
    		boolean encontrado = false;
    		Usuario usu = null;
-   		while(it.hasNext() && encontrado == false) {
+   		while(it.hasNext() && !encontrado ) {
    			usu = it.next();
    			if(usu.tieneEsteId(pId)) {
    				encontrado = true;
@@ -59,7 +59,7 @@ public class ListaUsuarios
    		Iterator<Usuario> it = this.getIterador();
    		boolean existe = false;
    		Usuario usu;
-   		while(it.hasNext() && existe == false) {
+   		while(it.hasNext() && !existe) {
    			usu = it.next();
    			if(usu.tieneMismoId(pUsuario)) {
    				existe = true;
@@ -80,8 +80,8 @@ public class ListaUsuarios
 	public void darDeBajaUsuario(int pIdUsuario)
 	{
 		Usuario usu = this.buscarUsuarioPorId(pIdUsuario);
-		if(this.existeUsuarioConMismoId(usu)) {
-			this.lista.remove(usu);
+		if(usu != null) {
+				this.lista.remove(usu);
 		}else {
 			System.out.println("El ususarios que intenta eliminar, no existe en la lista de usuarios");
 		}
