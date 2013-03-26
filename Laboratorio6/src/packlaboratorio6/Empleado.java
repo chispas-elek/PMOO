@@ -60,34 +60,13 @@ public class Empleado {
 		return this.lista.iterator();
 	}
 	
-	public double calcularNeto() {
+	public double calcularSalario() {
 		double result = 0;
 		Iterator<Concepto> it = this.obtIterator();
 		Concepto pCon;
-		TaxFree pTF;
-		Complemento pCM;
-		Extra pEX;
-		Base pBS;
 		while(it.hasNext()) {
-			pCon = (Concepto)it.next();
-			if(pCon instanceof TaxFree) {
-				pTF = (TaxFree)pCon;
-				result = result + pTF.calcularImporte();
-			}
-			else if(pCon instanceof Taxed) {
-				if(pCon instanceof Base) {
-					pBS = (Base)pCon;
-					result = result + pBS.calcularNeto();
-				}
-				else if(pCon instanceof Extra) {
-					pEX = (Extra)pCon;
-					result = result + pEX.calcularNeto();
-				}
-				else if(pCon instanceof Complemento) {
-					pCM = (Complemento)pCon;
-					result = result + pCM
-				}
-			}
+			pCon = it.next();
+			result = result + pCon.calcularNeto();
 		}
 		return result;
 	}

@@ -11,7 +11,7 @@ public class TaxFree extends Concepto {
 	
 	//Constructor
 	public TaxFree(String pDescripcion, int pHoras, double pImporte) {
-		super(pImporte);
+		this.setImporte(pImporte);
 		this.descripcion = pDescripcion;
 		this.horas = pHoras;
 		//this.setImporte(pImporte);
@@ -38,7 +38,8 @@ public class TaxFree extends Concepto {
 		this.horas = pHoras;
 	}
 	
-	public double calcularImporte() {
+	@Override
+	public double calcularNeto() {
 		return (this.horas * this.getImporte());
 	}
 

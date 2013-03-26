@@ -6,15 +6,15 @@ package packlaboratorio6;
 public class Complemento extends Taxed {
 	
 	//Variables 
-	private  
+	 
 	
 	//Constructor
+	public Complemento(double pImporte) {
+		super(pImporte);
+	}
 	
 	//Getters & Setters
 	
 	//Methods
 	
-	public calcularNeto() {
-		
-	}
 }

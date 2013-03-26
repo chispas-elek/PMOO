@@ -19,4 +19,8 @@ public class Taxed extends Concepto {
 	public void setRetencion(int retencion) {
 		this.retencion = retencion;
 	}
+	
+	public double calcular() {
+		return (this.getImporte() - (this.getImporte() * this.getRetencion()/100));
+	}
 }

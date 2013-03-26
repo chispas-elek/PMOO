@@ -23,10 +23,4 @@ public class Base extends Taxed {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	//Methods
-	
-	public double calcularNeto() {
-		return this.getImporte();
-	}
 }

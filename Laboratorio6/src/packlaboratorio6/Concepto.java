@@ -24,8 +24,8 @@ public class Concepto {
 	
 	public void setImporte(double pImporte) {
 		this.importe = pImporte;
+	}	
+	public double calcularNeto() {
+		return this.getImporte();
 	}
-	
-	//Methods
-	
 }
