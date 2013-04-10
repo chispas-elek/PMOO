@@ -3,7 +3,7 @@
 
 package org.pmoo.packlaboratorio6;;
 
-public class Complemento extends Taxed {
+public abstract class Complemento extends Taxed {
 	
 	//Variables 
 	 
