@@ -5,13 +5,14 @@ import java.util.*;
 public class ListaAlumnos
 {
 	// atributos
-
+	private ArrayList<Alumno> lista;
 	/**
 	 * post: inicializa la lista de alumnos a una lista vacía
 	 */
 	public ListaAlumnos()
 	{
 		// TODO completar
+		lista = null;
 	}
 
 			
@@ -24,6 +25,12 @@ public class ListaAlumnos
 	public void anadirAlumno(Alumno pAlumno)
 	{
 		// TODO completar
+		if(this.esta(pAlumno)) {
+			System.out.println("Alumno ya existente");
+		}
+		else {
+			this.lista.add(pAlumno);
+		}
 	}
 
 	/**
@@ -33,6 +40,12 @@ public class ListaAlumnos
 	public void retirarAlumno(Alumno pAlumno)
 	{
 		// TODO completar
+		if(!this.esta(pAlumno)) {
+			System.out.println("Alumno no existente");
+		}
+		else {
+			this.lista.remove(pAlumno);
+		}
 	}
 
 	/**
@@ -42,8 +55,16 @@ public class ListaAlumnos
 	 */
 	public boolean esta(Alumno pAlumno)
 	{
-		// TODO completar
-		return true;
+		Iterator<Alumno> it = this.lista.iterator();
+		Alumno al;
+		boolean flag = false;
+		while(it.hasNext()) {
+			al = it.next();
+			if (al == pAlumno) {
+				flag = true;
+			}
+		}
+		return flag;
 	}
 	
 	/**
@@ -52,7 +73,7 @@ public class ListaAlumnos
 	public int getTamano()
 	{
 		// TODO completar
-		return 0;
+		return this.lista.size();
 	}
 
 	/**
@@ -67,6 +88,15 @@ public class ListaAlumnos
 	 public Alumno getAlumnoEnPos(int pPos)
 	 {
 			// TODO completar
-			return null;
-	 }
+		 int i = 0;
+		 Iterator<Alumno> it = this.lista.iterator();
+		 Alumno al = null;
+		 while(it.hasNext()){
+			while(i <= (pPos -1)) {
+				it.next();
+			}
+			al = it.next();
+		 }
+		 return al;
+	 }	 
 }

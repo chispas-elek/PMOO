@@ -14,7 +14,7 @@ public class Mujer extends Alumno
 	public Mujer(String pDNI, String pNombre, String pApellido, int pEdad)
 	{
 		// TODO completar
-		super(null, null, null, 0);
+		super(pDNI, pNombre, pApellido, pEdad);
 	}
 	
 // otros métodos
@@ -33,6 +33,16 @@ public class Mujer extends Alumno
 	public Hombre emparejar(ListaAlumnos pHombreDisponibles)
 	{
 		// TODO completar
+		int i = 1;
+		boolean flag = false;
+		Hombre hom = null;
+		while(i <= this.getListaPreferencias().getTamano()) {
+			hom = (Hombre)this.getListaPreferencias().getAlumnoEnPos(i);
+			if(pHombreDisponibles.esta(hom)) {
+				hom = pHombreDisponibles.
+			}
+		}
+		
 		return null;
 	}
 

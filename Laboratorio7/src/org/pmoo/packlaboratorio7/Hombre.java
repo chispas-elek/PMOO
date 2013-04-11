@@ -1,3 +1,6 @@
+//Author -> Mulero Martínez, Rubén
+//Author -> Esteban García, Asier
+
 package org.pmoo.packlaboratorio7;
 
 public class Hombre extends Alumno
@@ -14,7 +17,7 @@ public class Hombre extends Alumno
 	public Hombre(String pDNI, String pNombre, String pApellido, int pEdad)
 	{
 		// TODO completar
-		super(null, null, null, 0);
+		super(pDNI, pNombre, pApellido, pEdad);
 	}
 
 	// otros métodos
@@ -26,8 +29,12 @@ public class Hombre extends Alumno
 	 */
 	public boolean aceptar(Mujer pMujer)
 	{
+		boolean flag = false;
 		// TODO completar
-		return true;
+		if(this.getListaPreferencias().esta(pMujer)) {
+			flag = true;
+		}
+		return flag;
 	}
 
 	/**
@@ -40,5 +47,6 @@ public class Hombre extends Alumno
 	public void anadirPreferencia(Alumno pAlumno)
 	{
 		// TODO completar
+		this.getListaPreferencias().anadirAlumno(pAlumno);
 	}
 }

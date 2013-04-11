@@ -1,13 +1,19 @@
+//Author -> Mulero Martínez, Rubén
+//Author -> Esteban García, Asier
+
 package org.pmoo.packlaboratorio7;
 
 public class CursoBaile
 {
 	// atributos
+	private static CursoBaile miCursoBaile = null;
+	
 
+	
 	// constructora
 	private CursoBaile()
 	{
-
+		
 	}
 
 	// getters y setters
@@ -18,7 +24,10 @@ public class CursoBaile
 	public static CursoBaile getCursoBaile()
 	{
 		// TODO completar
-		return null;
+		if(miCursoBaile == null) {
+			 miCursoBaile = new CursoBaile();
+		}
+		return miCursoBaile;
 	}
 
 	// otros métodos

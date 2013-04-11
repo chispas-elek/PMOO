@@ -1,9 +1,14 @@
+//Author -> Mulero Martínez, Rubén
+//Author -> Esteban García, Asier
+
 package org.pmoo.packlaboratorio7;
 
 public abstract class Alumno extends Object
 {
 	// atributos
-
+	private String dni, nombre, apellido;
+	private int edad;
+	private ListaAlumnos listaPreferencias = null;
 	// constructora
 	/**
 	 * 
@@ -17,11 +22,17 @@ public abstract class Alumno extends Object
 	 */
 	public Alumno(String pDNI, String pNombre, String pApellido, int pEdad)
 	{
-		// TODO completar
+		super(); //FRANKY
+		this.dni = pDNI;
+		this.nombre = pNombre;
+		this.apellido = pApellido;
+		this.edad = pEdad;
+		
 	}
 
 	// getters y setters
 
+	
 	/**
 	 * 
 	 * @return la lista de preferencias del alumno
@@ -29,7 +40,7 @@ public abstract class Alumno extends Object
 	protected ListaAlumnos getListaPreferencias()
 	{
 		// TODO completar
-		return null;
+		return this.listaPreferencias;
 	}
 
 	/**
@@ -39,7 +50,7 @@ public abstract class Alumno extends Object
 	public String getNombre()
 	{
 		// TODO completar
-		return null;
+		return this.nombre;
 	}
 
 	/**
@@ -49,7 +60,7 @@ public abstract class Alumno extends Object
 	public String getApellido()
 	{
 		// TODO completar
-		return null;
+		return this.apellido;
 	}
 
 	/**
@@ -59,7 +70,7 @@ public abstract class Alumno extends Object
 	public int getEdad()
 	{
 		// TODO completar
-		return 0;
+		return this.edad;
 	}
 
 	/**
@@ -69,7 +80,7 @@ public abstract class Alumno extends Object
 	public String getDNI()
 	{
 		// TODO completar
-		return null;
+		return this.dni;
 	}
 
 	// otros métodos
