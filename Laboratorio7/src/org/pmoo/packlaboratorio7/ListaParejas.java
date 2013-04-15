@@ -8,11 +8,14 @@ import java.util.*;
 public class ListaParejas
 {
 	// atributos
+	private static ListaParejas mListaParejas = null;
+	private ArrayList<Pareja> lista;
 
 	// constructora
 	private ListaParejas()
 	{
 		// TODO completar
+		this.lista = new ArrayList<Pareja>();
 	}
 
 	// getters y setters
@@ -23,7 +26,10 @@ public class ListaParejas
 	public static ListaParejas getListaParejas()
 	{
 		// TODO completar
-		return null;
+		if(mListaParejas == null) {
+			mListaParejas = new ListaParejas();
+		}
+		return mListaParejas;
 	}
 
 	// otros métodos
@@ -35,7 +41,7 @@ public class ListaParejas
 	private Iterator<Pareja> getIterador()
 	{
 		// TODO completar
-		return null;
+		return this.lista.iterator();
 	}
 	
 	/**
@@ -48,6 +54,22 @@ public class ListaParejas
 	public void anadirOrdenadoPareja(Pareja pPareja)
 	{
 		// TODO completar
+		Iterator<Pareja> it = this.getIterador();
+		int i = 0;
+		Pareja lPareja = null;
+		ListaParejas listaP = ListaParejas.getListaParejas();
+		boolean flag = false;
+		while(it.hasNext() && !flag) {
+			lPareja = it.next();
+			if(lPareja.getElla().getEdad() < pPareja.getElla().getEdad()) {
+				listaP.lista.add(i, pPareja);
+				flag = true;
+			}
+			i++;
+		}
+		if(!flag) {
+			listaP.lista.add(pPareja);
+		}
 	}
 
 	/**
@@ -59,7 +81,20 @@ public class ListaParejas
 	public Alumno obtenerParejaDe(Alumno pAlumno)
 	{
 		// TODO completar
-		return null;
+		Alumno result = null;
+		Pareja lPareja = null;
+		Iterator<Pareja> it = this.getIterador();
+		boolean flag = false;
+		while(it.hasNext() && !flag) {
+			lPareja = it.next();
+			if(lPareja.esta(pAlumno) && pAlumno instanceof Hombre) {
+					result = lPareja.getElla();
+			}
+			else {
+				result = lPareja.getEl();
+			}
+		}
+		return result;
 	}
 
 	/**
@@ -80,6 +115,39 @@ public class ListaParejas
 	{
 		
 		// TODO completar
+		ArrayList<Pareja> parejas = new ArrayList<Pareja>();
+		Pareja lPareja = null;
+		Pareja pAux;
+		ListaAlumnos lHombres = new ListaAlumnos();
+		ListaAlumnosCurso lLista = ListaAlumnosCurso.getListaAlumnosCurso();
+		Iterator<Pareja> itP = this.lista.iterator();
+		Hombre hom = null;
+		boolean flag = true;
+		//==============================================
+		while(itP.hasNext()) {
+			lPareja = itP.next();
+			lHombres.anadirAlumno(lPareja.getEl());
+		}//Hombres cargados
+		//==============================================
+		itP = this.lista.iterator(); //Recargo iterador
+		//==============================================
+		if(!lLista.hayAlumnosSinPareja()) {
+			while(itP.hasNext() && flag) {
+				lPareja = itP.next();
+				hom = lPareja.getElla().emparejar(lHombres);
+				if(hom != null) {
+					pAux = new Pareja(hom, lPareja.getElla());
+					parejas.add(pAux);
+				}
+				else {
+					flag = false;
+				}
+			}
+			if(flag) {
+				this.lista = parejas;
+			}
+		}
+		
 	}
 
 	/**
@@ -88,5 +156,6 @@ public class ListaParejas
 	public void resetear()
 	{
 		//TODO completar
+		this.lista = new ArrayList<Pareja>();
 	}
 }

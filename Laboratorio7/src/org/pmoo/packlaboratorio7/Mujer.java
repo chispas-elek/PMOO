@@ -49,9 +49,9 @@ public class Mujer extends Alumno
 			else {
 				hom = (Hombre)this.getListaPreferencias().getAlumnoEnPos(i);
 				if(pHombreDisponibles.esta(hom)) {
-					hom = (Hombre)pHombreDisponibles.getAlumnoEnPos(i);
 					if(hom.aceptar(this)) {
 						result = hom;
+						pHombreDisponibles.retirarAlumno(hom);
 					}//if2
 				}//if1
 			}//else

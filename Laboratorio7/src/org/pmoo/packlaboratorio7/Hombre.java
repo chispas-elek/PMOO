@@ -51,7 +51,7 @@ public class Hombre extends Alumno
 			this.getListaPreferencias().anadirAlumno(pAlumno);
 		}
 		else { 
-			System.out.println("El alumno es hombre")
+			System.out.println("El alumno es hombre");
 		}
 	}
 }

@@ -8,11 +8,14 @@ import java.util.*;
 public class ListaAlumnosCurso
 {
 	// atributos
+	private static ListaAlumnosCurso mListaAlumnosCurso = null;
+	private ArrayList<Alumno> lista;
 
 	// constructora
 	private ListaAlumnosCurso()
 	{
 		// TODO completar
+		lista = new ArrayList<Alumno>();
 	}
 
 	// getters y setters
@@ -23,7 +26,10 @@ public class ListaAlumnosCurso
 	public static ListaAlumnosCurso getListaAlumnosCurso()
 	{
 		// TODO completar
-		return null;
+		if(mListaAlumnosCurso == null) {
+			mListaAlumnosCurso = new ListaAlumnosCurso();
+		}
+		return mListaAlumnosCurso;
 	}
 
 	// otros métodos
@@ -37,6 +43,13 @@ public class ListaAlumnosCurso
 	public void anadirAlumnoCurso(Alumno pAlumno)
 	{
 		// TODO completar
+		if(!this.lista.contains(pAlumno)) {
+			this.lista.add(pAlumno);
+		}
+		else {
+			System.out.println("Alumno ya existente");
+		}
+		
 	}
 
 	/**
@@ -46,7 +59,7 @@ public class ListaAlumnosCurso
 	private Iterator<Alumno> getIterador()
 	{
 		// TODO completar
-		return null;
+		return this.lista.iterator();
 	}
 
 	/**
@@ -55,6 +68,7 @@ public class ListaAlumnosCurso
 	public void resetear()
 	{
 		// TODO completar
+		this.lista = new ArrayList<Alumno>();
 	}
 
 	/**
@@ -66,7 +80,16 @@ public class ListaAlumnosCurso
 	public Alumno buscarAlumnoPorDNI(String pDNI)
 	{
 		// TODO completar
-		return null;
+		Alumno lAl = null;
+		Iterator<Alumno> it = this.getIterador();
+		boolean flag = false;
+		while(it.hasNext() && !flag) {
+			lAl =it.next();
+			if(lAl.getDNI() == pDNI) {
+				flag = true;
+			}
+		}
+		return lAl;
 	}
 
 	/**
@@ -77,6 +100,17 @@ public class ListaAlumnosCurso
 	public boolean hayAlumnosSinPareja()
 	{
 		// TODO completar
-		return true;
+		ListaParejas listaP = ListaParejas.getListaParejas();
+		Iterator<Alumno> it = this.getIterador();
+		Alumno al = null;
+		boolean flag = false;
+		
+		while(it.hasNext() && !flag) {
+			al = it.next();
+			if(listaP.obtenerParejaDe(al) == null) {
+				flag = true;
+			}
+		}
+		return flag;
 	}
 }
