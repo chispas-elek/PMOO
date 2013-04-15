@@ -3,6 +3,8 @@ package org.pmoo.packlaboratorio7;
 public class Pareja
 {
 	// atributos
+	private Hombre el;
+	private Mujer ella;
 	
 	// constructora
 	/**
@@ -18,6 +20,19 @@ public class Pareja
 	public Pareja(Alumno pAlumno1, Alumno pAlumno2)
 	{
 		//TODO completar
+		if( (pAlumno1 instanceof Hombre && pAlumno2 instanceof Hombre) || (pAlumno1 instanceof Mujer && pAlumno2 instanceof Mujer)) {
+			System.out.println("Ambos son del mismo sexo");
+		}
+		else {
+			if(pAlumno1 instanceof Hombre) {
+				el = (Hombre)pAlumno1;
+				ella = (Mujer)pAlumno2;
+			}
+			else {
+				el = (Hombre)pAlumno2;
+				ella = (Mujer)pAlumno1;
+			}
+		}
 	}
 	
 	// getters y setters
@@ -29,7 +44,7 @@ public class Pareja
 	public Hombre getEl()
 	{
 		//TODO completar
-		return null;
+		return this.el;
 	}
 		
 	/**
@@ -39,7 +54,7 @@ public class Pareja
 	public Mujer getElla()
 	{
 		//TODO completar
-		return null;
+		return this.ella;
 	}
 	
 	/**
@@ -50,6 +65,10 @@ public class Pareja
 	public boolean esta(Alumno pAlumno)
 	{
 		//TODO completar
-		return true;
+		boolean flag = false;
+		if(this.el == pAlumno || this.ella == pAlumno) {
+			flag = true;
+		}
+		return flag;
 	}
 }

@@ -58,7 +58,7 @@ public class ListaAlumnos
 		Iterator<Alumno> it = this.lista.iterator();
 		Alumno al;
 		boolean flag = false;
-		while(it.hasNext()) {
+		while(it.hasNext() && !flag) {
 			al = it.next();
 			if (al == pAlumno) {
 				flag = true;
