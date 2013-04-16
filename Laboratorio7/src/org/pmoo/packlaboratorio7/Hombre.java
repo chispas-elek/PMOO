@@ -47,6 +47,11 @@ public class Hombre extends Alumno
 	public void anadirPreferencia(Alumno pAlumno)
 	{
 		// TODO completar
-		this.getListaPreferencias().anadirAlumno(pAlumno);
+		if(pAlumno instanceof Mujer) {
+			this.getListaPreferencias().anadirAlumno(pAlumno);
+		}
+		else { 
+			System.out.println("El alumno es hombre");
+		}
 	}
 }

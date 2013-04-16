@@ -7,13 +7,11 @@ public class CursoBaile
 {
 	// atributos
 	private static CursoBaile miCursoBaile = null;
-	
 
 	
 	// constructora
 	private CursoBaile()
 	{
-		
 	}
 
 	// getters y setters
@@ -47,6 +45,18 @@ public class CursoBaile
 	public void darDeAltaPareja(String pDNI1, String pDNI2)
 	{
 		// TODO completar
+		ListaAlumnosCurso lAlumnos = ListaAlumnosCurso.getListaAlumnosCurso();
+		ListaParejas lParejas = ListaParejas.getListaParejas();
+		Pareja par = null;
+		Alumno al1 = lAlumnos.buscarAlumnoPorDNI(pDNI1);
+		Alumno al2 = lAlumnos.buscarAlumnoPorDNI(pDNI2);
+		if(al1 == null || al2 == null || lParejas.obtenerParejaDe(al1) != null || lParejas.obtenerParejaDe(al2) != null || (al1 instanceof Hombre && al2 instanceof Hombre) || (al1 instanceof Mujer && al2 instanceof Mujer)) {
+			System.out.println("No se cumplen las condiciones");
+		}
+		else {
+			par = new Pareja(al1,al2);
+			lParejas.anadirOrdenadoPareja(par);
+		}
 	}
 
 	/**
@@ -68,6 +78,40 @@ public class CursoBaile
 			int pEdad, char pSexo)
 	{
 		// TODO completar
+		ListaAlumnosCurso lAlumnos = ListaAlumnosCurso.getListaAlumnosCurso();
+		Alumno al = null;
+		boolean eSex = false;
+		switch(pSexo){
+		case 'M': {
+			al = new Mujer(pDNI, pNombre, pApellido, pEdad);
+			break;
+		}
+		case 'm': {
+			al = new Mujer(pDNI, pNombre, pApellido, pEdad);
+			break;
+		}
+		case 'H': {
+			al = new Hombre(pDNI, pNombre, pApellido, pEdad);
+			break;
+		}
+		case 'h': {
+			al = new Hombre(pDNI, pNombre, pApellido, pEdad);
+			break;
+		}
+		default : {
+			System.out.println("Sexo no valido");
+			eSex = true;
+			break;
+		}
+			
+		}//switch
+		
+		if(lAlumnos.buscarAlumnoPorDNI(al.getDNI()) != null) {
+			System.out.println("El alumno ya existe");
+		}
+		else if(!eSex) {
+			lAlumnos.anadirAlumnoCurso(al);
+		}
 	}
 
 	/**
@@ -80,6 +124,15 @@ public class CursoBaile
 	public void anadirPreferencia(String pIdQuien, String pIdSuPreferencia)
 	{
 		// TODO completar
+		ListaAlumnosCurso lAlumnos = ListaAlumnosCurso.getListaAlumnosCurso();
+		Alumno al1 = lAlumnos.buscarAlumnoPorDNI(pIdQuien);
+		Alumno al2 = lAlumnos.buscarAlumnoPorDNI(pIdSuPreferencia);
+		if(al1 == null || al2 == null) {
+			System.out.println("Algun dato es erroneo");
+		}
+		else {
+			al1.anadirPreferencia(al2);
+		}
 	}
 
 	/**
@@ -88,6 +141,10 @@ public class CursoBaile
 	public void empezarCurso()
 	{
 		// TODO completar
+		ListaParejas lParejas = ListaParejas.getListaParejas();
+		ListaAlumnosCurso lAlumnos = ListaAlumnosCurso.getListaAlumnosCurso();
+		lParejas.resetear();
+		lAlumnos.resetear();
 	}
 
 	/**
@@ -97,5 +154,7 @@ public class CursoBaile
 	public void ajustarParejasSegunPreferencias()
 	{
 		// TODO completar
+		ListaParejas lParejas = ListaParejas.getListaParejas();
+		lParejas.reajustarParejas();
 	}
 }

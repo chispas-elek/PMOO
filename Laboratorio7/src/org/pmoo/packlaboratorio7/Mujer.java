@@ -1,3 +1,6 @@
+//Author -> Mulero Martínez, Rubén
+//Author -> Esteban García, Asier
+
 package org.pmoo.packlaboratorio7;
 
 public class Mujer extends Alumno
@@ -35,16 +38,27 @@ public class Mujer extends Alumno
 		// TODO completar
 		int i = 1;
 		boolean flag = false;
+		boolean flagm = false;
 		Hombre hom = null;
-		while(i <= this.getListaPreferencias().getTamano()) {
-			hom = (Hombre)this.getListaPreferencias().getAlumnoEnPos(i);
-			if(pHombreDisponibles.esta(hom)) {
-				hom = pHombreDisponibles.
-			}
-		}
-		
-		return null;
-	}
+		Hombre result = null;
+		while(i <= this.getListaPreferencias().getTamano() && !flag && !flagm) {
+			if(this.getListaPreferencias().getAlumnoEnPos(i) instanceof Mujer) {
+				System.out.println("Hay una mujer en la lista");
+				flagm = true;
+			}//if
+			else {
+				hom = (Hombre)this.getListaPreferencias().getAlumnoEnPos(i);
+				if(pHombreDisponibles.esta(hom)) {
+					if(hom.aceptar(this)) {
+						result = hom;
+						pHombreDisponibles.retirarAlumno(hom);
+					}//if2
+				}//if1
+			}//else
+			i++;
+		}//while
+		return result;
+	}//emparejar
 
 	/**
 	 * @param pAlumno
@@ -56,5 +70,11 @@ public class Mujer extends Alumno
 	public void anadirPreferencia(Alumno pAlumno)
 	{
 		// TODO completar
+		if (pAlumno instanceof Hombre) {
+			this.getListaPreferencias().anadirAlumno(pAlumno);
+		}
+		else {
+			System.out.println("El alumno es una mujer");
+		}
 	}
 }
