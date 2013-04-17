@@ -15,7 +15,7 @@ public class ListaAlumnos
 	public ListaAlumnos()
 	{
 		// TODO completar
-		lista = null;
+		lista = new ArrayList<Alumno>();
 	}
 
 			

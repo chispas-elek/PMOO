@@ -27,7 +27,7 @@ public abstract class Alumno extends Object
 		this.nombre = pNombre;
 		this.apellido = pApellido;
 		this.edad = pEdad;
-		
+		this.listaPreferencias = new ListaAlumnos();
 	}
 
 	// getters y setters
