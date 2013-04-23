@@ -62,8 +62,6 @@ public class ListaParejasTest {
 		lParejas.anadirOrdenadoPareja(pareja1);
 		lParejas.anadirOrdenadoPareja(pareja2);
 		lParejas.reajustarParejas();
-		System.out.println(lParejas.obtenerParejaDe(muj1));
-		System.out.println(lParejas.obtenerParejaDe(hom1));
 		assertTrue(lParejas.obtenerParejaDe(muj1) == hom2);
 		assertTrue(lParejas.obtenerParejaDe(hom1) == muj2);
 	}

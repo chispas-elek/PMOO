@@ -11,7 +11,6 @@ public class CursoBaileTest {
 	//Variables
 	private Hombre hom1,hom2;
 	private Mujer muj1,muj2;
-	private Pareja par1,par2;
 	private ListaParejas lParejas;
 	private ListaAlumnosCurso lAlums;
 	private CursoBaile curso;
@@ -21,10 +20,11 @@ public class CursoBaileTest {
 		hom1 = new Hombre("1111","Paco","Porras",31);
 		hom2 = new Hombre("1112","Poco","Parros",55);
 		muj1 = new Mujer("1113","Paca","Tal",33);
-		muj2 = new Mujer("1113","Poca","Tel",33);
-		par1 = new Pareja(hom1,muj1);
+		muj2 = new Mujer("1114","Poca","Tel",33);
 		curso = CursoBaile.getCursoBaile();
-		lAlums = 
+		lAlums = ListaAlumnosCurso.getListaAlumnosCurso();
+		lParejas = ListaParejas.getListaParejas();
+		
 		
 	}
 
@@ -34,40 +34,67 @@ public class CursoBaileTest {
 		hom2 = null;
 		muj1 = null;
 		muj2 = null;
-		par1 = null;
-		par2 = null;
-		lParejas.resetear();
-		lAlums.resetear();
+		curso.empezarCurso();
 	}
 
 	@Test
 	public void testGetCursoBaile() {
-		fail("Not yet implemented");
+		assertTrue(curso != null);
 	}
 
 	@Test
 	public void testDarDeAltaPareja() {
-		fail("Not yet implemented");
+		lAlums.anadirAlumnoCurso(hom1);
+		lAlums.anadirAlumnoCurso(muj1);
+		curso.darDeAltaPareja(hom1.getDNI(), muj1.getDNI());
+		assertTrue(lParejas.obtenerParejaDe(hom1) == muj1);
 	}
 
 	@Test
 	public void testDarDeAltaAlumno() {
-		fail("Not yet implemented");
+		lAlums.anadirAlumnoCurso(hom2);
+		curso.darDeAltaAlumno(hom2.getDNI(), hom2.getNombre(), hom2.getApellido(), hom2.getEdad(), 'm');
+		curso.darDeAltaAlumno(hom2.getDNI(), hom2.getNombre(), hom2.getApellido(), hom2.getEdad(), 'M');
+		curso.darDeAltaAlumno(hom2.getDNI(), hom2.getNombre(), hom2.getApellido(), hom2.getEdad(), 'h');
+		curso.darDeAltaAlumno(hom2.getDNI(), hom2.getNombre(), hom2.getApellido(), hom2.getEdad(), 'H');
+		curso.darDeAltaAlumno(hom2.getDNI(), hom2.getNombre(), hom2.getApellido(), hom2.getEdad(), 'z');
+		assertTrue(lAlums.buscarAlumnoPorDNI("1112") == hom2);
 	}
 
 	@Test
 	public void testAnadirPreferencia() {
-		fail("Not yet implemented");
+		lAlums.anadirAlumnoCurso(hom1);
+		lAlums.anadirAlumnoCurso(muj2);
+		curso.anadirPreferencia("1111", "1114");
+		curso.anadirPreferencia("11", "12");
+		assertTrue(lAlums.buscarAlumnoPorDNI(hom1.getDNI()).getListaPreferencias().esta(muj2));
 	}
 
 	@Test
 	public void testEmpezarCurso() {
-		fail("Not yet implemented");
+		lAlums.anadirAlumnoCurso(hom1);
+		lAlums.anadirAlumnoCurso(muj1);
+		curso.darDeAltaPareja(hom1.getDNI(), muj1.getDNI());
+		curso.empezarCurso();
+		assertTrue(lAlums.buscarAlumnoPorDNI(hom1.getDNI()) == null);
+		assertTrue(lParejas.obtenerParejaDe(hom1) == null);
 	}
 
 	@Test
 	public void testAjustarParejasSegunPreferencias() {
-		fail("Not yet implemented");
+		lAlums.anadirAlumnoCurso(hom1);
+		lAlums.anadirAlumnoCurso(muj1);
+		curso.darDeAltaPareja(hom1.getDNI(), muj1.getDNI());
+		lAlums.anadirAlumnoCurso(hom2);
+		lAlums.anadirAlumnoCurso(muj2);
+		curso.darDeAltaPareja(hom2.getDNI(), muj2.getDNI());
+		hom1.anadirPreferencia(muj2);
+		muj2.anadirPreferencia(hom1);
+		hom2.anadirPreferencia(muj1);
+		muj1.anadirPreferencia(hom2);
+		curso.ajustarParejasSegunPreferencias();
+		assertTrue(lParejas.obtenerParejaDe(hom1) == muj2);
+		assertTrue(lParejas.obtenerParejaDe(hom2) == muj1);
 	}
 
 }

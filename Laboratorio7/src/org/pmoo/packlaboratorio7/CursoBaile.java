@@ -106,7 +106,7 @@ public class CursoBaile
 			
 		}//switch
 		
-		if(lAlumnos.buscarAlumnoPorDNI(al.getDNI()) != null) {
+		if(!eSex && lAlumnos.buscarAlumnoPorDNI(al.getDNI()) != null) {
 			System.out.println("El alumno ya existe");
 		}
 		else if(!eSex) {
