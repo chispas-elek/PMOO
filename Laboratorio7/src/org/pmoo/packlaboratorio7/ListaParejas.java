@@ -90,7 +90,7 @@ public class ListaParejas
 			if(lPareja.esta(pAlumno) && pAlumno instanceof Hombre) {
 					result = lPareja.getElla();
 			}
-			else {
+			else if(lPareja.esta(pAlumno) && pAlumno instanceof Mujer){
 				result = lPareja.getEl();
 			}
 		}
