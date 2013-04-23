@@ -34,7 +34,7 @@ public class ListaAlumnosCursoTest {
 
 	@Test
 	public void testGetListaAlumnosCurso() {
-		assertTrue(lAlumC != null);
+		assertNotNull(lAlumC);
 	}
 
 	@Test
@@ -47,7 +47,7 @@ public class ListaAlumnosCursoTest {
 	public void testResetear() {
 		lAlumC.anadirAlumnoCurso(al1);
 		lAlumC.resetear();
-		assertTrue(lAlumC.buscarAlumnoPorDNI("1111") == null);
+		assertNull(lAlumC.buscarAlumnoPorDNI("1111"));
 	}
 
 	@Test

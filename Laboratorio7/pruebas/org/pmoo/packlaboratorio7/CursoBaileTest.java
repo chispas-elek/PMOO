@@ -39,7 +39,7 @@ public class CursoBaileTest {
 
 	@Test
 	public void testGetCursoBaile() {
-		assertTrue(curso != null);
+		assertNotNull(curso);
 	}
 
 	@Test
@@ -76,8 +76,8 @@ public class CursoBaileTest {
 		lAlums.anadirAlumnoCurso(muj1);
 		curso.darDeAltaPareja(hom1.getDNI(), muj1.getDNI());
 		curso.empezarCurso();
-		assertTrue(lAlums.buscarAlumnoPorDNI(hom1.getDNI()) == null);
-		assertTrue(lParejas.obtenerParejaDe(hom1) == null);
+		assertNull(lAlums.buscarAlumnoPorDNI(hom1.getDNI()));
+		assertNull(lParejas.obtenerParejaDe(hom1));
 	}
 
 	@Test

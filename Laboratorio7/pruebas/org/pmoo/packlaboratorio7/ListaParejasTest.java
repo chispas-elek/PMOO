@@ -38,13 +38,13 @@ public class ListaParejasTest {
 
 	@Test
 	public void testGetListaParejas() {
-		assertTrue(lParejas != null);
+		assertNotNull(lParejas);
 	}
 
 	@Test
 	public void testAnadirOrdenadoPareja() {
 		lParejas.anadirOrdenadoPareja(pareja1);
-		assertTrue(lParejas.obtenerParejaDe(hom1) != null);
+		assertNotNull(lParejas.obtenerParejaDe(hom1));
 	}
 
 	@Test
@@ -69,7 +69,7 @@ public class ListaParejasTest {
 	@Test
 	public void testResetear() {
 		lParejas.resetear();
-		assertTrue(lParejas.obtenerParejaDe(hom1) == null);
+		assertNull(lParejas.obtenerParejaDe(hom1));
 	}
 
 }

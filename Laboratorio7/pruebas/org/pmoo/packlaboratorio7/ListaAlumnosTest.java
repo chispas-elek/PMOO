@@ -28,7 +28,7 @@ public class ListaAlumnosTest {
 
 	@Test
 	public void testListaAlumnos() {
-		assertTrue(lAlumnos != null);
+		assertNotNull(lAlumnos);
 	}
 
 	@Test

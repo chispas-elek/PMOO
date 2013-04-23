@@ -38,23 +38,14 @@ public class Mujer extends Alumno
 		// TODO completar
 		int i = 0;
 		boolean flag = false;
-		boolean flagm = false;
 		Hombre hom = null;
 		Hombre result = null;
-		while(i <= this.getListaPreferencias().getTamano() && !flag && !flagm) {
-			if(this.getListaPreferencias().getAlumnoEnPos(i) instanceof Mujer) {
-				System.out.println("Hay una mujer en la lista");
-				flagm = true;
-			}//if
-			else {
+		while(i <= this.getListaPreferencias().getTamano() -1 && !flag) {
 				hom = (Hombre)this.getListaPreferencias().getAlumnoEnPos(i);
-				if(pHombreDisponibles.esta(hom)) {
-					if(hom.aceptar(this)) {
+				if(pHombreDisponibles.esta(hom) && hom.aceptar(this)) {
 						result = hom;
 						flag = true;
 						pHombreDisponibles.retirarAlumno(hom);
-					}//if2
-				}//if1
 			}//else
 			i++;
 		}//while
