@@ -51,6 +51,7 @@ public class Mujer extends Alumno
 				if(pHombreDisponibles.esta(hom)) {
 					if(hom.aceptar(this)) {
 						result = hom;
+						flag = true;
 						pHombreDisponibles.retirarAlumno(hom);
 					}//if2
 				}//if1
