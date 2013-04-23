@@ -59,8 +59,10 @@ public class ListaAlumnosTest {
 
 	@Test
 	public void testGetAlumnoEnPos() {
+		assertNull(lAlumnos.getAlumnoEnPos(0));
 		lAlumnos.anadirAlumno(hom1);
 		assertEquals(hom1,lAlumnos.getAlumnoEnPos(0));
+		assertNull(lAlumnos.getAlumnoEnPos(100));
 	}
 
 }

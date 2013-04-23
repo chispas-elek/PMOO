@@ -47,6 +47,7 @@ public class CursoBaileTest {
 		lAlums.anadirAlumnoCurso(hom1);
 		lAlums.anadirAlumnoCurso(muj1);
 		curso.darDeAltaPareja(hom1.getDNI(), muj1.getDNI());
+		curso.darDeAltaPareja(hom1.getDNI(), hom2.getDNI());
 		assertTrue(lParejas.obtenerParejaDe(hom1) == muj1);
 	}
 
@@ -58,6 +59,11 @@ public class CursoBaileTest {
 		curso.darDeAltaAlumno(hom2.getDNI(), hom2.getNombre(), hom2.getApellido(), hom2.getEdad(), 'h');
 		curso.darDeAltaAlumno(hom2.getDNI(), hom2.getNombre(), hom2.getApellido(), hom2.getEdad(), 'H');
 		curso.darDeAltaAlumno(hom2.getDNI(), hom2.getNombre(), hom2.getApellido(), hom2.getEdad(), 'z');
+		curso.darDeAltaAlumno(muj2.getDNI(), muj2.getNombre(), muj2.getApellido(), muj2.getEdad(), 'm');
+		curso.darDeAltaAlumno(muj2.getDNI(), muj2.getNombre(), muj2.getApellido(), muj2.getEdad(), 'M');
+		curso.darDeAltaAlumno(muj2.getDNI(), muj2.getNombre(), muj2.getApellido(), muj2.getEdad(), 'h');
+		curso.darDeAltaAlumno(muj2.getDNI(), muj2.getNombre(), muj2.getApellido(), muj2.getEdad(), 'H');
+		curso.darDeAltaAlumno(muj2.getDNI(), muj2.getNombre(), muj2.getApellido(), muj2.getEdad(), 'z');
 		assertTrue(lAlums.buscarAlumnoPorDNI("1112") == hom2);
 	}
 

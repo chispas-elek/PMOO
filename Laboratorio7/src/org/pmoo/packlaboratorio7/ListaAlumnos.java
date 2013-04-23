@@ -90,6 +90,13 @@ public class ListaAlumnos
 	 */
 	 public Alumno getAlumnoEnPos(int pPos)
 	 {
-		 return lista.get(pPos);
+		 Alumno al;
+		 if(this.getTamano() == 0 && pPos >= this.getTamano()) {
+			 al = null;
+		 }
+		 else {
+			 al = lista.get(pPos);
+		 }
+		 return al;
 	 }	
 }
