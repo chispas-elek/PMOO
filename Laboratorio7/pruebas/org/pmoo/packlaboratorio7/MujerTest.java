@@ -51,8 +51,12 @@ public class MujerTest {
 		this.m1.anadirPreferencia(m2);
 		this.m1.anadirPreferencia(h2);
 		this.m1.anadirPreferencia(h1);
+		this.h1.anadirPreferencia(m2);
+		this.h1.anadirPreferencia(m1);
+		this.h2.anadirPreferencia(m1);
 		//Emparejamos...
 		assertEquals(h2,this.m1.emparejar(l1));
+		//Falta comprobar si h2 no la acepta
 	}
 
 }

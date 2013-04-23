@@ -90,16 +90,6 @@ public class ListaAlumnos
 	 */
 	 public Alumno getAlumnoEnPos(int pPos)
 	 {
-			// TODO completar
-		 int i = 0;
-		 Iterator<Alumno> it = this.lista.iterator();
-		 Alumno al = null;
-		 while(it.hasNext()){
-			while(i <= (pPos -1)) {
-				it.next();
-			}
-			al = it.next();
-		 }
-		 return al;
-	 }	 
+		 return lista.get(pPos);
+	 }	
 }

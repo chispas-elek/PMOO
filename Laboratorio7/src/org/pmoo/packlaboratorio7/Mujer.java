@@ -36,7 +36,7 @@ public class Mujer extends Alumno
 	public Hombre emparejar(ListaAlumnos pHombreDisponibles)
 	{
 		// TODO completar
-		int i = 1;
+		int i = 0;
 		boolean flag = false;
 		boolean flagm = false;
 		Hombre hom = null;
