@@ -63,6 +63,8 @@ public class ListaAlumnosTest {
 		lAlumnos.anadirAlumno(hom1);
 		assertEquals(hom1,lAlumnos.getAlumnoEnPos(0));
 		assertNull(lAlumnos.getAlumnoEnPos(100));
+		assertNull(lAlumnos.getAlumnoEnPos(-100));
+		
 	}
 
 }

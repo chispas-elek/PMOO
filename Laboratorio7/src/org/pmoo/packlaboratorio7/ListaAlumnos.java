@@ -91,7 +91,7 @@ public class ListaAlumnos
 	 public Alumno getAlumnoEnPos(int pPos)
 	 {
 		 Alumno al;
-		 if(this.getTamano() == 0 && pPos >= this.getTamano()) {
+		 if(this.getTamano() == 0 || pPos >= this.getTamano() || pPos < 0) {
 			 al = null;
 		 }
 		 else {
