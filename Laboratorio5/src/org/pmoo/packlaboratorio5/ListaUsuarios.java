@@ -79,11 +79,21 @@ public class ListaUsuarios
 
 	public void darDeBajaUsuario(int pIdUsuario)
 	{
-		Usuario usu = this.buscarUsuarioPorId(pIdUsuario);
+		/*Usuario usu = this.buscarUsuarioPorId(pIdUsuario);
 		if(usu != null) {
 				this.lista.remove(usu);
 		}else {
 			System.out.println("El ususarios que intenta eliminar, no existe en la lista de usuarios");
+		}*/
+		
+		//Realizamos los cambios del laboratorio 8 usándo excepciones
+		
+		//Habrá que programar nuestra propia definición de error para cuando usu sea igual a null Usando Throws.
+		try{
+			Usuario usu = this.buscarUsuarioPorId(pIdUsuario);
+			this.lista.remove(usu);
+		}catch(IndexOutOfBoundsException e)  {
+				System.out.println("El usuario que intenta eliminar no existe");
 		}
    	}
 
