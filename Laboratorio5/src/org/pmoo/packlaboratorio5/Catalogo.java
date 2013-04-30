@@ -1,5 +1,9 @@
 package org.pmoo.packlaboratorio5;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class Catalogo
 {
 	// atributos
@@ -65,7 +69,7 @@ public class Catalogo
 
  	public void devolverLibro(int pIdLibro)
 	{
-		ListaUsuarios lUsu = ListaUsuarios.getListaUsuarios();
+		/*ListaUsuarios lUsu = ListaUsuarios.getListaUsuarios();
 		Libro lib = this.lista.buscarLibroPorId(pIdLibro);
 		//Comprobamos que el libro exista.
 		if(lib != null) {
@@ -78,16 +82,61 @@ public class Catalogo
 			}
 		}else {
 			System.out.println("El libro que intentas devolver no existe");
-		}
-	}
+		}*/
+ 		 
+ 		
+ 		ListaUsuarios lUsu = ListaUsuarios.getListaUsuarios();
+ 		try{
+ 			Libro lib = this.lista.buscarLibroPorId(pIdLibro);
+     		//Comprobamos que el libro exista.
+ 			if(lib == null) {
+ 				throw new Exception();
+ 			}else {
+ 				//Buscamos el usuario pedido
+ 				try{
+ 					Usuario usu = lUsu.quienLoTienePrestado(lib);
+ 					if(usu == null) {
+ 						throw new Exception();
+ 					}else {
+ 						usu.eliminarLibro(lib);
+ 					}
+ 				}catch(Exception e) {
+ 					System.out.println("El libro que intentas devolver no lo tiene ningún usuario en pŕestamo");
+ 					lib.imprimir();
+ 				}
+ 			}
+ 		}catch(Exception e) {
+ 			System.out.println("El libro que has introducido no existe");
+ 		}	
+			
+ 	}
  	
  	public void catalogarLibro(Libro pLibro)
  	{
- 		if(!this.lista.esta(pLibro)) {
+ 		/*if(!this.lista.esta(pLibro)) {
  			this.lista.anadirLibro(pLibro);
  		}else {
  			System.out.println("El libro que intentas introducir ya existe");
+ 		}*/
+ 		try{
+ 			if(this.lista.esta(pLibro)) {
+ 				throw new Exception();
+ 			}else {
+ 				this.lista.anadirLibro(pLibro);
+ 			}
+ 		}catch(Exception e) {
+ 			System.out.println("El identificador del libro que intenta introducir ya existe en el sistema. Por favor, introduzca un nuevo identificador");
+ 			try {
+ 				InputStreamReader isr = new InputStreamReader(System.in);
+ 				BufferedReader br = new BufferedReader(isr);
+ 				int nuevoId = Integer.parseInt(br.readLine());
+ 				Libro nuevoLibro = new Libro(pLibro.getTitulo(),pLibro.getAutor(),nuevoId);
+ 				this.catalogarLibro(nuevoLibro);
+ 			}catch(IOException ex) {
+ 				ex.printStackTrace();
+ 			}
  		}
+ 		
  	}
 
  	public void descatalogarLibro(int pIdLibro)

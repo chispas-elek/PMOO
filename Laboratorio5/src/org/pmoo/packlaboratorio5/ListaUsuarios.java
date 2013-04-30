@@ -73,7 +73,7 @@ public class ListaUsuarios
 	   	if(!this.existeUsuarioConMismoId(pUsuario)) {
 	   		this.lista.add(pUsuario);
 	   	}else {
-	   		System.out.print("El usuario que intenta añadir, ya existe en la lista de usuarios");
+	   		System.out.println("El usuario que intenta añadir, ya existe en la lista de usuarios");
 	   	}
    	}
 
@@ -87,14 +87,17 @@ public class ListaUsuarios
 		}*/
 		
 		//Realizamos los cambios del laboratorio 8 usándo excepciones
-		
-		//Habrá que programar nuestra propia definición de error para cuando usu sea igual a null Usando Throws.
 		try{
 			Usuario usu = this.buscarUsuarioPorId(pIdUsuario);
-			this.lista.remove(usu);
-		}catch(IndexOutOfBoundsException e)  {
-				System.out.println("El usuario que intenta eliminar no existe");
+			if(usu == null) {
+				throw new Exception();
+			}else {
+				this.lista.remove(usu);
+			}
+		}catch(Exception e) {
+			System.out.println("El usuario que intenta eliminar, no existe en la lista de usuarios");
 		}
+		
    	}
 
    	public Usuario quienLoTienePrestado(Libro pLibro)
