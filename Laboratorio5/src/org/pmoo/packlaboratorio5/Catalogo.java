@@ -1,8 +1,7 @@
 package org.pmoo.packlaboratorio5;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class Catalogo
 {
@@ -126,14 +125,16 @@ public class Catalogo
  			}
  		}catch(Exception e) {
  			System.out.println("El identificador del libro que intenta introducir ya existe en el sistema. Por favor, introduzca un nuevo identificador");
+ 			Scanner sc = new Scanner(System.in);
  			try {
- 				InputStreamReader isr = new InputStreamReader(System.in);
- 				BufferedReader br = new BufferedReader(isr);
- 				int nuevoId = Integer.parseInt(br.readLine());
+ 				int nuevoId = sc.nextInt();
  				Libro nuevoLibro = new Libro(pLibro.getTitulo(),pLibro.getAutor(),nuevoId);
  				this.catalogarLibro(nuevoLibro);
- 			}catch(IOException ex) {
- 				ex.printStackTrace();
+ 			}catch(InputMismatchException ex) {
+ 				System.out.println("Sólo puedes introducir números, por favor, introduce un id");
+ 				sc.next();
+ 			}finally{
+ 				sc.close();
  			}
  		}
  		
