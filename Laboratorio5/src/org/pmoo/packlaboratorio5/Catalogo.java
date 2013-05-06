@@ -185,10 +185,10 @@ public class Catalogo
 				sc.next();
 			}catch(Exception e) {
 				System.out.println("Has introducido un id negativo o un 0, por favor introduce un id positivo");
-				sc.next();
+				//sc.next();
 			}
 		}
-		sc.close();
+		//sc.close();
 		return nuevoId;
  	}
  	
