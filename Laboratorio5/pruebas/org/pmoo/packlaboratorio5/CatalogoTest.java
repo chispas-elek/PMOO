@@ -136,7 +136,7 @@ public class CatalogoTest extends TestCase
 		assertEquals(1,Catalogo.getCatalogo().getTamano());
 		//Comprobamos que no se pueda introducir 2 veces
 		Catalogo.getCatalogo().catalogarLibro(l1);
-		assertEquals(1,Catalogo.getCatalogo().getTamano());
+		assertEquals(2,Catalogo.getCatalogo().getTamano());
 	}
 	
 	@Test

@@ -117,26 +117,22 @@ public class Catalogo
  		}else {
  			System.out.println("El libro que intentas introducir ya existe");
  		}*/
- 		try{
- 			if(this.lista.esta(pLibro)) {
- 				throw new Exception();
- 			}else {
- 				this.lista.anadirLibro(pLibro);
+ 		boolean introducido = false;
+ 		int contador = 0;
+ 		do{
+ 			try{
+ 				if(this.lista.buscarLibroPorId(pLibro.getIdLibro()) != null) {
+ 					throw new Exception();
+ 				}else {
+ 					this.lista.anadirLibro(pLibro);
+ 					introducido = true;
+ 				}
+ 			}catch(Exception e) {
+ 				int nuevoId = this.pedirIdLibro();
+ 				pLibro = new Libro(pLibro.getTitulo(),pLibro.getAutor(),nuevoId);
+ 				contador++;
  			}
- 		}catch(Exception e) {
- 			System.out.println("El identificador del libro que intenta introducir ya existe en el sistema. Por favor, introduzca un nuevo identificador");
- 			Scanner sc = new Scanner(System.in);
- 			try {
- 				int nuevoId = sc.nextInt();
- 				Libro nuevoLibro = new Libro(pLibro.getTitulo(),pLibro.getAutor(),nuevoId);
- 				this.catalogarLibro(nuevoLibro);
- 			}catch(InputMismatchException ex) {
- 				System.out.println("Sólo puedes introducir números, por favor, introduce un id");
- 				sc.next();
- 			}finally{
- 				sc.close();
- 			}
- 		}
+ 		}while(contador<3 && introducido == false);
  		
  	}
 
@@ -167,6 +163,33 @@ public class Catalogo
  	{
  		this.lista = null;
  		this.lista = new ListaLibros();
+ 	}
+ 	
+ 	//Método para pedir un nuevo id al usuario, cambiado por excepciones
+ 	
+ 	private int pedirIdLibro() {
+ 		int nuevoId = 0;
+ 		boolean numero = false;
+ 		System.out.println("El identificador del libro que intenta introducir ya existe en el sistema. Por favor, introduzca un nuevo identificador");
+		Scanner sc = new Scanner(System.in);
+		while(numero == false) {
+			try {
+				nuevoId = sc.nextInt();
+				if(nuevoId <= 0){
+					throw new Exception();
+				}else {
+					numero = true;
+				}
+			}catch(InputMismatchException ex) {
+				System.out.println("Sólo puedes introducir números, por favor, introduce un id");
+				sc.next();
+			}catch(Exception e) {
+				System.out.println("Has introducido un id negativo o un 0, por favor introduce un id positivo");
+				sc.next();
+			}
+		}
+		sc.close();
+		return nuevoId;
  	}
  	
 }	
